@@ -1,31 +1,10 @@
+from servicos import *
 import random
 
-class agencia:
-    def __init__(self):
-        self.numero_ag = 2027
-        self.contas = []
-
-    def criar_conta(self, nome, cpf, senha):
-        self.contas.append(conta(titular(nome, cpf), senha))
-
-    def deposito(self, num_conta, valor):
-        for conta in self.contas:
-            if num_conta == conta.numero_cc:
-                conta.saldo += valor
-                return True
-        return False
-
-    def valida_conta(self, num_conta, senha):
-        for conta in self.contas:
-            if num_conta == conta.numero_cc:
-                if senha == conta.senha:
-                    return conta
-        return False
-
 class conta:
-    def __init__(self, titular, senha):
+    def __init__(self, numero_ag, titular, senha):
         self.numero_cc = random.randint(100, 900)
-        self.numero_ag = 2027
+        self.numero_ag = numero_ag
         self.titular = titular
         self.senha = senha
         self.saldo = 0
@@ -39,6 +18,9 @@ class conta:
     def deposito(self, valor):
         self.saldo += valor
 
+    def get_nome(self):
+        return self.titular.get_nome_titular()
+
 class titular:
     def __init__(self, nome, cpf):
         self.nome = nome
@@ -46,3 +28,6 @@ class titular:
 
     def __str__(self):
         return "Nome do tilular: ", self.nome, "\nCPF: ", self.cpf
+
+    def get_nome_titular(self):
+        return self.nome

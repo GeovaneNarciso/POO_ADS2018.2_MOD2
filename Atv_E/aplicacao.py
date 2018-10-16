@@ -1,8 +1,7 @@
-from modelos import *
+from servicos import *
 import random
 
 def main():
-    agencia_a = agencia()
     while True:
         print("\n\n########## BANCO G ##########\n\n"
               "1 - | Entrar         |\n"
@@ -18,7 +17,7 @@ def main():
             if conta_logada:
                 opcao_b = -1
                 while opcao_b != 0:
-                    nome_titular = conta_logada.titular.nome
+                    nome_titular = conta_logada.get_nome()
                     print("\n\n########## BANCO G ##########\n\n"
                           "Bem Vindo", nome_titular, "\n"
                           "1 - | Saque    |\n"
