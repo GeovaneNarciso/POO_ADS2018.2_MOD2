@@ -9,7 +9,7 @@ class Repositorio:
         for arquivo in self.arquivos:
             if not arquivo.get_tracked():
                 print(arquivo.get_nome, "\n")
-        print("\nArquivos Tracked: \n")
+        print("\nMudanças para Commitar: \n")
         for arquivo in self.arquivos:
             if  arquivo.get_tracked():
                 print(arquivo.get_nome, "\n")
@@ -20,6 +20,7 @@ class Arquivo:
         self.conteudo = conteudo
         self.mudanca = []
         self.tracked = False
+        self.staged = False
 
     def get_tracked(self):
         return self.tracked
@@ -27,8 +28,14 @@ class Arquivo:
     def get_nome(self):
         return self.nome
 
+    def get_staged(self):
+        return self.staged
+
 class Mudanca:
-    pass
+    def __init__(self, arquivo, tipo):
+        self.arquivo = arquivo
+        self.tipo = tipo
+        self.staged = False
 
 class Commit:
     pass
