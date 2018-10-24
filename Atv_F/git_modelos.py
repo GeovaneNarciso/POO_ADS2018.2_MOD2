@@ -22,6 +22,11 @@ class Repositorio:
         self.arquivos.append(Arquivo(nome, conteudo))
         return "\nArquivo criado.\n"
 
+    def listar_arquivos(self):
+        for arquivo in self.arquivos:
+            print(arquivo.get_nome, "\n")
+            print("")
+
 class Arquivo:
     def __init__(self, nome, conteudo):
         self.nome = nome
