@@ -6,6 +6,8 @@ class Repositorio:
 
 class Arquivo:
     def __init__(self, nome, conteudo):
+        self.nome = nome
+        self.conteudo = conteudo
         self.mudanca = []
 
 class Mudanca:

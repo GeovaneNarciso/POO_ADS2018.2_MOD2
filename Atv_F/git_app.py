@@ -10,7 +10,7 @@ def main():
                   "Opções:\n"
                   "1 - Criar repositório\n"
                   "0 - Sair\n")
-        opcao = int(input("Informe a opção:  ..."))
+        opcao = int(input("Informe a opção: "))
         if opcao == 1:
             nome_repo = input("Informe o nome do repositório: \n")
             repo_01 = Repositorio(nome_repo)
