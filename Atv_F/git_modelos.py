@@ -11,18 +11,19 @@ class Repositorio:
                 print(arquivo.get_nome, "\n")
         print("\nMudanças para Commitar: \n")
         for arquivo in self.arquivos:
-            if  arquivo.get_tracked():
+            if  arquivo.is_tracked():
+                print(arquivo.ultimas_mudancas[0].get_tipo,": ",  end="")
                 print(arquivo.get_nome, "\n")
 
 class Arquivo:
     def __init__(self, nome, conteudo):
         self.nome = nome
         self.conteudo = conteudo
-        self.mudanca = [Mudanca(self, "Novo arquivo")]
+        self.mudancas = [Mudanca(self, "Novo arquivo")]
         self.tracked = False
-        self.staged = False
+        #self.staged = False
 
-    def get_tracked(self):
+    def is_tracked(self):
         return self.tracked
 
     def get_nome(self):
@@ -31,12 +32,23 @@ class Arquivo:
     def get_staged(self):
         return self.staged
 
+    def ultimas_mudancas(self):
+        for mudanca in self.mudancas:
+            if mudanca.staged:
+                mudanca_true = mudanca
+            else:
+                mudanca_false = mudanca
+        return  [mudanca_true, mudanca_false]
+
 class Mudanca:
     def __init__(self, arquivo, tipo):
         self.arquivo = arquivo
         self.tipo = tipo
         self.staged = False
         self.commit = False
+
+    def get_tipo(self):
+        return self.tipo
 
 class Commit:
     pass
