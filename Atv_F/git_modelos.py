@@ -18,7 +18,7 @@ class Arquivo:
     def __init__(self, nome, conteudo):
         self.nome = nome
         self.conteudo = conteudo
-        self.mudanca = []
+        self.mudanca = [Mudanca(self, "Novo arquivo")]
         self.tracked = False
         self.staged = False
 
@@ -36,6 +36,7 @@ class Mudanca:
         self.arquivo = arquivo
         self.tipo = tipo
         self.staged = False
+        self.commit = False
 
 class Commit:
     pass
