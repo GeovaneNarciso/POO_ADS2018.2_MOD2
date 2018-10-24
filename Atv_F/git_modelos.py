@@ -15,6 +15,13 @@ class Repositorio:
                 print(arquivo.ultimas_mudancas[0].get_tipo,": ",  end="")
                 print(arquivo.get_nome, "\n")
 
+    def criar_arquivo(self, nome, conteudo):
+        for arquivo in self.arquivos:
+            if arquivo.get_nome == nome:
+                return "\nJá existe um arquivo com este nome.\n"
+        self.arquivos.append(Arquivo(nome, conteudo))
+        return "\nArquivo criado.\n"
+
 class Arquivo:
     def __init__(self, nome, conteudo):
         self.nome = nome

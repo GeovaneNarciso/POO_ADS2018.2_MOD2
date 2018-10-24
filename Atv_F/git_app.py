@@ -9,12 +9,16 @@ def main():
                   "-------------\n\n"
                   "Opções:\n"
                   "1 - Criar repositório\n"
+                  "2 - Criar arquivo\n"
                   "0 - Sair\n")
         opcao = int(input("Informe a opção: "))
         if opcao == 1:
             nome_repo = input("Informe o nome do repositório: \n")
             repo_01 = Repositorio(nome_repo)
-            print(repo_01)
+        elif opcao == 2:
+            nome_arq = input("Informe o nome do arquivo: ")
+            conteudo_arq = input("Informe o conteudo do arquivo: ")
+            print(repo_01.criar_arquivo)
         elif opcao == 0:
             print("Encerrado.")
 
