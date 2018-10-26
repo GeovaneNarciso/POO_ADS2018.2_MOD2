@@ -8,24 +8,24 @@ class Repositorio:
         print("Arquivos Untracked: \n")
         for arquivo in self.arquivos:
             if not arquivo.get_tracked():
-                print(arquivo.get_nome, "\n")
+                print(arquivo.get_nome(), "\n")
         print("\nMudanças para Commitar: \n")
         for arquivo in self.arquivos:
             if  arquivo.is_tracked():
                 print(arquivo.ultimas_mudancas[0].get_tipo,": ",  end="")
-                print(arquivo.get_nome, "\n")
+                print(arquivo.get_nome(), "\n")
 
     def criar_arquivo(self, nome, conteudo):
         for arquivo in self.arquivos:
-            if arquivo.get_nome == nome:
-                return "\nJá existe um arquivo com este nome.\n"
+            if arquivo.get_nome() == nome:
+                return "\n***** Já existe um arquivo com este nome. *****\n"
         self.arquivos.append(Arquivo(nome, conteudo))
-        return "\nArquivo criado.\n"
+        return "\n***** Arquivo criado. *****\n"
 
     def listar_arquivos(self):
         for arquivo in self.arquivos:
-            print(arquivo.get_nome, "\n")
-            print("")
+            print(arquivo.get_nome())
+        print("")
 
 class Arquivo:
     def __init__(self, nome, conteudo):
