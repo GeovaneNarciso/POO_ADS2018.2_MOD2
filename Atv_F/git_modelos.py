@@ -27,6 +27,21 @@ class Repositorio:
             print(arquivo.get_nome())
         print("")
 
+    def busca_nome(self):
+        nomes = []
+        for arquivo in self.arquivos:
+            nomes.append(arquivo.get_nome())
+        return nomes
+
+    def add(self, nome):
+        if nome in busca_nome():
+            for arquivo in self.arquivos:
+                if arquivo.get_nome() == nome:
+                    arquivo.add()
+                    return " "
+        else:
+            return "\nNão há arquivo com este nome.\n"
+
 class Arquivo:
     def __init__(self, nome, conteudo):
         self.nome = nome
