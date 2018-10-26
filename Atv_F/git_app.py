@@ -11,6 +11,7 @@ def main():
                   "1 - Criar repositório\n"
                   "2 - Criar arquivo\n"
                   "3 - Listar arquivos\n"
+                  "8 - Status\n"
                   "0 - Sair\n")
         opcao = int(input("Informe a opção: "))
         if opcao == 1:
@@ -22,6 +23,8 @@ def main():
             print(repo_01.criar_arquivo(nome_arq, conteudo_arq))
         elif opcao == 3:
             repo_01.listar_arquivos()
+        elif opcao == 8:
+            repo_01.status()
         elif opcao == 0:
             print("Encerrado.")
 

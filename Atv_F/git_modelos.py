@@ -7,8 +7,8 @@ class Repositorio:
     def status(self):
         print("Arquivos Untracked: \n")
         for arquivo in self.arquivos:
-            if not arquivo.get_tracked():
-                print(arquivo.get_nome(), "\n")
+            if not arquivo.is_tracked():
+                print("   * ", arquivo.get_nome())
         print("\nMudanças para Commitar: \n")
         for arquivo in self.arquivos:
             if  arquivo.is_tracked():
