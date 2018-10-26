@@ -52,6 +52,12 @@ class Arquivo:
                 mudanca_false = mudanca
         return  [mudanca_true, mudanca_false]
 
+    def add(self):
+        for mudanca in self.mudancas:
+            if not mudanca.commit:
+                mudanca.stage()
+        self.tracked = True
+
 class Mudanca:
     def __init__(self, arquivo, tipo):
         self.arquivo = arquivo
@@ -61,6 +67,12 @@ class Mudanca:
 
     def get_tipo(self):
         return self.tipo
+
+    def stage(self):
+        self.staged = True
+
+    def unstage(self):
+        self.staged = False
 
 class Commit:
     pass
