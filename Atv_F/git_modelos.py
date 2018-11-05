@@ -12,7 +12,7 @@ class Repositorio:
         print("\nMudanças para Commitar: \n")
         for arquivo in self.arquivos:
             if  arquivo.is_tracked():
-                print(arquivo.ultimas_mudancas[0].get_tipo,": ",  end="")
+                print(arquivo.ultimas_mudancas()[0].get_tipo(),": ",  end="")
                 print(arquivo.get_nome(), "\n")
 
     def criar_arquivo(self, nome, conteudo):
@@ -27,14 +27,14 @@ class Repositorio:
             print(arquivo.get_nome())
         print("")
 
-    def busca_nome(self):
-        nomes = []
+    def busca_nome(self, nome):
         for arquivo in self.arquivos:
-            nomes.append(arquivo.get_nome())
-        return nomes
+            if arquivo.get_nome() == nome:
+                return True
+        return False
 
-    def add(self, nome):
-        if nome in busca_nome():
+    def add(self, nome, busca):
+        if busca:
             for arquivo in self.arquivos:
                 if arquivo.get_nome() == nome:
                     arquivo.add()
