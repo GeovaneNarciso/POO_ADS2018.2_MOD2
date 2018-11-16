@@ -33,8 +33,9 @@ public class App {
     public static void main(String[] args) {
         Sistema s = new Sistema();
         String opSistema = "-1", opAdmin = "-1", opUsuario;
-        boolean obrigatoria;
+        boolean obrigatoria, votacaoCriada = false;
         Votacao v = null;
+
 
         while (!opSistema.equals("0")){
             opSistema = JOptionPane.showInputDialog(menuSistema());
@@ -48,25 +49,30 @@ public class App {
                         String dtInicio = JOptionPane.showInputDialog("Data de início:");
                         String dtFim = JOptionPane.showInputDialog("Data de encerramento:");
                         v = s.criaVotacao(tema, votantes, dtInicio, dtFim);
+                        votacaoCriada = true;
                         JOptionPane.showMessageDialog(null, v.toString());
 
                     }else if(opAdmin.equals("2")){
-                        String titulo = JOptionPane.showInputDialog("Informe o título da pergunta:");
+                        if(votacaoCriada){
+                            String titulo = JOptionPane.showInputDialog("Informe o título da pergunta:");
 
-                        String obrigada = JOptionPane.showInputDialog("Resposta será obrigatória? (S ou N):");
-                        obrigatoria = obrigada.equals("S");
+                            String obrigada = JOptionPane.showInputDialog("Resposta será obrigatória? (S ou N):");
+                            obrigatoria = obrigada.equals("S");
 
-                        ArrayList<String> op = new ArrayList<>();
-                        while (true){
-                            String opcao = JOptionPane.showInputDialog("Informe a opcao (Informe FIM p/ encerrar):");
-                            if(opcao.equals("FIM"))
-                                break;
-                            op.add(opcao);
-                        }
-                        s.recebePergunta(titulo, obrigatoria, op, v);
+                            ArrayList<String> op = new ArrayList<>();
+                            while (true){
+                                String opcao = JOptionPane.showInputDialog("Informe a opcao (Informe FIM p/ encerrar):");
+                                if(opcao.equals("FIM"))
+                                    break;
+                                op.add(opcao);
+                            }
+                            s.recebePergunta(titulo, obrigatoria, op, v);
+                        }else
+                            JOptionPane.showMessageDialog(null,"Não existe votação criada.");
+
                     }else if(opAdmin.equals("3")){
-                        if(v.ehCriada())
-                            v.toString();
+                        if(votacaoCriada)
+                            JOptionPane.showMessageDialog(null, v.toString());
                         else
                             JOptionPane.showMessageDialog(null,"Não existe votação criada.");
                     }else if(opAdmin.equals("0"))
