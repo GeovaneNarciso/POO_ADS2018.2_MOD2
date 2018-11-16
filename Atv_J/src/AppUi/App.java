@@ -26,7 +26,6 @@ public class App {
                 "1 - Criar votação\n" +
                 "2 - Criar perguntas\n" +
                 "3 - Exibir votação\n" +
-                "4 - Exibir tokens\n" +
                 "0 - Sair\n\n" +
                 "Informe a opção:";
         return menu;
@@ -53,7 +52,7 @@ public class App {
                                 String dtFim = JOptionPane.showInputDialog("Data de encerramento:");
                                 v = s.criaVotacao(tema, votantes, dtInicio, dtFim);
                                 votacaoCriada = true;
-                                JOptionPane.showMessageDialog(null, v.toString());
+                                JOptionPane.showMessageDialog(null, "Votação Criada.");
 
                                 break;
                             case "2":
@@ -76,15 +75,10 @@ public class App {
 
                                 break;
                             case "3":
-                                if (votacaoCriada)
+                                if (votacaoCriada) {
                                     JOptionPane.showMessageDialog(null, v.toString());
-                                else
-                                    JOptionPane.showMessageDialog(null, "Não existe votação criada.");
-                                break;
-                            case "4":
-                                if (votacaoCriada )
                                     JOptionPane.showMessageDialog(null, v.exibeTokens());
-                                else
+                                }else
                                     JOptionPane.showMessageDialog(null, "Não existe votação criada.");
                                 break;
                             case "0":
