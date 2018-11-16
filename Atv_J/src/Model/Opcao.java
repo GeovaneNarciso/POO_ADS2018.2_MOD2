@@ -1,7 +1,7 @@
 package Model;
 
 public class Opcao {
-    private int contagem = 0;
+    private int votos = 0;
     private String descricao;
 
     public Opcao(String descricao){
@@ -12,7 +12,11 @@ public class Opcao {
         return descricao;
     }
 
+    public int getVotos() {
+        return votos;
+    }
+
     public void votar(){
-        this.contagem += 1;
+        this.votos += 1;
     }
 }

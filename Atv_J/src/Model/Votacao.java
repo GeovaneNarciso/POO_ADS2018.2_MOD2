@@ -21,6 +21,7 @@ public class Votacao {
             this.tokens.add(new Token(Integer.toString(i + 100) ));
         }
     }
+
     public String getTema() {
         return tema;
     }
@@ -33,7 +34,6 @@ public class Votacao {
     public boolean ehCriada() {
         return criada;
     }
-
     public void addPergunta(Pergunta p){
         this.perguntas.add(p);
     }
@@ -48,13 +48,12 @@ public class Votacao {
         }
         return tok;
     }
-
     @Override
     public String toString() {
         String votacaoToString;
         votacaoToString = "Tema: " + this.tema + "\n" +
                          "Duração: De " + this.dtInicio +
-                         "a " + this.dtFim + "\n" +
+                         " a " + this.dtFim + "\n" +
                          "Perguntas: \n";
         for(Pergunta p : perguntas){
             votacaoToString += " --- " + p.getTitulo() + "\n";
@@ -63,5 +62,15 @@ public class Votacao {
             }
         }
         return votacaoToString;
+    }
+    public String resultado(){
+        String resultado = "Resultado: \n";
+        for(Pergunta p : perguntas){
+            resultado += "\n --- " + p.getTitulo() + "\n";
+            for(Opcao o : p.getOpcoes()) {
+                resultado += "   - " + o.getDescricao() + " ( " + o.getVotos() + " votos )";
+            }
+        }
+        return resultado;
     }
 }
