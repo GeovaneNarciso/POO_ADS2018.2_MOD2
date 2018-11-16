@@ -57,14 +57,14 @@ public class App {
                                 break;
                             case "2":
                                 if (votacaoCriada) {
-                                    String titulo = JOptionPane.showInputDialog("Informe o título da pergunta:");
+                                    String titulo = JOptionPane.showInputDialog("Informe a pergunta:");
 
                                     String obrigada = JOptionPane.showInputDialog("Resposta será obrigatória? (S ou N):");
                                     obrigatoria = obrigada.equals("S");
 
                                     ArrayList<String> op = new ArrayList<>();
                                     while (true) {
-                                        String opcao = JOptionPane.showInputDialog("Informe a opcao (Informe FIM p/ encerrar):");
+                                        String opcao = JOptionPane.showInputDialog("Informe uma opcao para a pergunta (Informe FIM p/ encerrar):");
                                         if (opcao.equals("FIM"))
                                             break;
                                         op.add(opcao);
@@ -77,6 +77,12 @@ public class App {
                             case "3":
                                 if (votacaoCriada)
                                     JOptionPane.showMessageDialog(null, v.toString());
+                                else
+                                    JOptionPane.showMessageDialog(null, "Não existe votação criada.");
+                                break;
+                            case "4":
+                                if (votacaoCriada)
+                                    JOptionPane.showMessageDialog(null, v.exibeTokens());
                                 else
                                     JOptionPane.showMessageDialog(null, "Não existe votação criada.");
                                 break;

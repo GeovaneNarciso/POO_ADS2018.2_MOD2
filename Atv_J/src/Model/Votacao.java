@@ -21,25 +21,31 @@ public class Votacao {
             this.tokens.add(new Token(Integer.toString(i)));
         }
     }
-
     public String getTema() {
         return tema;
     }
-
     public String getDtInicio() {
         return dtInicio;
     }
-
     public String getDtFim() {
         return dtFim;
     }
-
     public boolean ehCriada() {
         return criada;
     }
-
     public void addPergunta(Pergunta p){
         this.perguntas.add(p);
+    }
+    public String exibeTokens(){
+        String tok = "Tokens: \nCódigo     Usado\n";
+        for(Token t : tokens){
+            tok += t.getCodigo() + "     ";
+            if(t.foiUsado())
+                tok += "S \n";
+            else
+                tok += "N \n";
+        }
+        return tok;
     }
 
     @Override
