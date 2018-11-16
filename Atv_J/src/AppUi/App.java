@@ -26,6 +26,7 @@ public class App {
                 "1 - Criar votação\n" +
                 "2 - Criar perguntas\n" +
                 "3 - Exibir votação\n" +
+                "4 - Exibir tokens\n" +
                 "0 - Sair\n\n" +
                 "Informe a opção:";
         return menu;
@@ -81,7 +82,7 @@ public class App {
                                     JOptionPane.showMessageDialog(null, "Não existe votação criada.");
                                 break;
                             case "4":
-                                if (votacaoCriada)
+                                if (votacaoCriada )
                                     JOptionPane.showMessageDialog(null, v.exibeTokens());
                                 else
                                     JOptionPane.showMessageDialog(null, "Não existe votação criada.");

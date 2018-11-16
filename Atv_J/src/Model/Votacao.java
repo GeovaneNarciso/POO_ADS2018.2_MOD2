@@ -18,7 +18,7 @@ public class Votacao {
         this.dtInicio = dtInicio;
         this.dtFim = dtFim;
         for(int i = 0; i < votantes; i++){
-            this.tokens.add(new Token(Integer.toString(i)));
+            this.tokens.add(new Token(Integer.toString(i + 100) ));
         }
     }
     public String getTema() {
@@ -33,13 +33,14 @@ public class Votacao {
     public boolean ehCriada() {
         return criada;
     }
+
     public void addPergunta(Pergunta p){
         this.perguntas.add(p);
     }
     public String exibeTokens(){
         String tok = "Tokens: \nCódigo     Usado\n";
         for(Token t : tokens){
-            tok += t.getCodigo() + "     ";
+            tok += t.getCodigo() + "              ";
             if(t.foiUsado())
                 tok += "S \n";
             else
