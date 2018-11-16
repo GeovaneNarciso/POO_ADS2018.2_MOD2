@@ -29,7 +29,7 @@ def main():
 
         elif opcao == 5:
             nome_arq = input("Informe o nome do arquivo: ")
-            print(repo_01.add(nome_arq))
+            print(repo_01.add(nome_arq, repo_01.busca_nome(nome_arq)))
 
         elif opcao == 8:
             repo_01.status()
