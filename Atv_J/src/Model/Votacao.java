@@ -52,10 +52,9 @@ public class Votacao {
     @Override
     public String toString() {
         String votacaoToString;
-        votacaoToString = "---------------\n" +
-                         "Tema: " + this.tema + "\n" +
-                         "Inícia em " + this.dtInicio + "\n" +
-                         "Encerra em " + this.dtFim + "\n" +
+        votacaoToString = "Tema: " + this.tema + "\n" +
+                         "Duração: De " + this.dtInicio +
+                         "a " + this.dtFim + "\n" +
                          "Perguntas: \n";
         for(Pergunta p : perguntas){
             votacaoToString += " --- " + p.getTitulo() + "\n";
