@@ -31,9 +31,15 @@ public class App {
                 "Informe a opção:";
         return menu;
     }
+    private static String menuUsuario(){
+        String menu;
+        menu =  "-----  USUÁRIO  -----\n" +
+                "Insira o seu token e vote.";
+        return menu;
+    }
     public static void main(String[] args) {
         Sistema s = new Sistema();
-        String opSistema = "-1", opAdmin = "-1", opUsuario;
+        String opSistema = "-1", opAdmin = "-1";
         boolean obrigatoria, votacaoCriada = false;
         Votacao v = null;
 
@@ -95,7 +101,10 @@ public class App {
                     }
                     break;
                 case "2":
-
+                    if (votacaoCriada) {
+                        JOptionPane.showMessageDialog(null, menuUsuario());
+                    }else
+                        JOptionPane.showMessageDialog(null, "Não existe votação criada.");
                     break;
                 case "0":
                     JOptionPane.showMessageDialog(null, "Encerrado");
