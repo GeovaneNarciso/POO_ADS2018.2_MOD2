@@ -5,10 +5,10 @@ import javax.swing.*;
 import Model.Votacao;
 import Services.*;
 import java.util.ArrayList;
-import java.util.Date;
+//import java.util.Date;
 
 public class App {
-    public static String menuSistema(){
+    private static String menuSistema(){
         String menu;
         menu =  "----- SISTEMA DE VOTACAO -----\n" +
                 "" +
@@ -19,7 +19,7 @@ public class App {
         return menu;
     }
 
-    public static String menuAdmin(){
+    private static String menuAdmin(){
         String menu;
         menu =  "-----  ADMIN  -----\n" +
                 "" +
@@ -40,48 +40,59 @@ public class App {
         while (!opSistema.equals("0")){
             opSistema = JOptionPane.showInputDialog(menuSistema());
 
-            if(opSistema.equals("1")){
-                while (!opAdmin.equals("0")){
-                    opAdmin = JOptionPane.showInputDialog(menuAdmin());
-                    if(opAdmin.equals("1")){
-                        String tema = JOptionPane.showInputDialog("Tema da votação:");
-                        int votantes = Integer.parseInt(JOptionPane.showInputDialog("Qtd de votantes:"));
-                        String dtInicio = JOptionPane.showInputDialog("Data de início:");
-                        String dtFim = JOptionPane.showInputDialog("Data de encerramento:");
-                        v = s.criaVotacao(tema, votantes, dtInicio, dtFim);
-                        votacaoCriada = true;
-                        JOptionPane.showMessageDialog(null, v.toString());
+            switch (opSistema) {
+                case "1":
+                    while (!opAdmin.equals("0")) {
+                        opAdmin = JOptionPane.showInputDialog(menuAdmin());
+                        switch (opAdmin) {
+                            case "1":
+                                String tema = JOptionPane.showInputDialog("Tema da votação:");
+                                int votantes = Integer.parseInt(JOptionPane.showInputDialog("Qtd de votantes:"));
+                                String dtInicio = JOptionPane.showInputDialog("Data de início:");
+                                String dtFim = JOptionPane.showInputDialog("Data de encerramento:");
+                                v = s.criaVotacao(tema, votantes, dtInicio, dtFim);
+                                votacaoCriada = true;
+                                JOptionPane.showMessageDialog(null, v.toString());
 
-                    }else if(opAdmin.equals("2")){
-                        if(votacaoCriada){
-                            String titulo = JOptionPane.showInputDialog("Informe o título da pergunta:");
+                                break;
+                            case "2":
+                                if (votacaoCriada) {
+                                    String titulo = JOptionPane.showInputDialog("Informe o título da pergunta:");
 
-                            String obrigada = JOptionPane.showInputDialog("Resposta será obrigatória? (S ou N):");
-                            obrigatoria = obrigada.equals("S");
+                                    String obrigada = JOptionPane.showInputDialog("Resposta será obrigatória? (S ou N):");
+                                    obrigatoria = obrigada.equals("S");
 
-                            ArrayList<String> op = new ArrayList<>();
-                            while (true){
-                                String opcao = JOptionPane.showInputDialog("Informe a opcao (Informe FIM p/ encerrar):");
-                                if(opcao.equals("FIM"))
-                                    break;
-                                op.add(opcao);
-                            }
-                            s.recebePergunta(titulo, obrigatoria, op, v);
-                        }else
-                            JOptionPane.showMessageDialog(null,"Não existe votação criada.");
+                                    ArrayList<String> op = new ArrayList<>();
+                                    while (true) {
+                                        String opcao = JOptionPane.showInputDialog("Informe a opcao (Informe FIM p/ encerrar):");
+                                        if (opcao.equals("FIM"))
+                                            break;
+                                        op.add(opcao);
+                                    }
+                                    s.recebePergunta(titulo, obrigatoria, op, v);
+                                } else
+                                    JOptionPane.showMessageDialog(null, "Não existe votação criada.");
 
-                    }else if(opAdmin.equals("3")){
-                        if(votacaoCriada)
-                            JOptionPane.showMessageDialog(null, v.toString());
-                        else
-                            JOptionPane.showMessageDialog(null,"Não existe votação criada.");
-                    }else if(opAdmin.equals("0"))
-                        JOptionPane.showMessageDialog(null,"Concluído");
-                }
-            }else if(opSistema.equals("2")){
+                                break;
+                            case "3":
+                                if (votacaoCriada)
+                                    JOptionPane.showMessageDialog(null, v.toString());
+                                else
+                                    JOptionPane.showMessageDialog(null, "Não existe votação criada.");
+                                break;
+                            case "0":
+                                JOptionPane.showMessageDialog(null, "Concluído");
+                                break;
+                        }
+                    }
+                    break;
+                case "2":
 
-            }else if(opSistema.equals("0"))
-                JOptionPane.showMessageDialog(null,"Encerrado");
+                    break;
+                case "0":
+                    JOptionPane.showMessageDialog(null, "Encerrado");
+                    break;
+            }
         }
     }
 }

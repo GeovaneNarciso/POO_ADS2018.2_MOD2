@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Votacao {
-    private boolean criada = false;
+    private boolean criada;
     private String tema;
     private String dtInicio;
     private String dtFim;
@@ -49,13 +49,11 @@ public class Votacao {
                          "Tema: " + this.tema + "\n" +
                          "Inícia em " + this.dtInicio + "\n" +
                          "Encerra em " + this.dtFim + "\n" +
-                         "Perguntas: ";
+                         "Perguntas: \n";
         for(Pergunta p : perguntas){
-            JOptionPane.showMessageDialog(null," ---" + p.getTitulo());
-            if(p.ehObrigatoria())
-                JOptionPane.showMessageDialog(null," --- Obrigatória");
+            votacaoToString += " --- " + p.getTitulo() + "\n";
             for(Opcao o : p.getOpcoes()) {
-                JOptionPane.showMessageDialog(null,"   - " + o.getDescricao());
+                votacaoToString += "   - " + o.getDescricao() + "\n";
             }
         }
         return votacaoToString;
