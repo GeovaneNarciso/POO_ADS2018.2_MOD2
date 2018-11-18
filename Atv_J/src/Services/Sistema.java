@@ -1,7 +1,7 @@
 package Services;
 
 import Model.*;
-import AppUi.*;
+//import AppUi.*;
 import java.util.ArrayList;
 
 public class Sistema {
@@ -21,9 +21,14 @@ public class Sistema {
 
     public String validaToken(String token){
         for(Token t : this.votacao.getTokens()){
-            if(t.getCodigo().equals(token))
-                return "";
+            if(t.getCodigo().equals(token)){
+                if(!t.foiUsado()) {
+                    t.usar();
+                    return "Token válido.";
+                }else
+                    return "Token já foi usado.";
+            }
         }
-        return "";
+        return "Token incorreto.";
     }
 }
