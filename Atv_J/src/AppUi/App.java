@@ -77,20 +77,20 @@ public class App {
                                     JOptionPane.showMessageDialog(null, "Não existe votação criada.");
 
                                 break;
-                            case "3":
+                            case "3": //Exibir votação
                                 if (s.getVotacao().foiCriada()) {
                                     JOptionPane.showMessageDialog(null, s.getVotacao().toString());
                                     JOptionPane.showMessageDialog(null, s.getVotacao().exibeTokens());
                                 }else
                                     JOptionPane.showMessageDialog(null, "Não existe votação criada.");
                                 break;
-                            case "4":
+                            case "4": // Resultado da votação
                                 if (s.getVotacao().foiCriada()) {
                                     JOptionPane.showMessageDialog(null, s.getVotacao().resultado());
                                 }else
                                     JOptionPane.showMessageDialog(null, "Não existe votação criada.");
                                 break;
-                            case "0":
+                            case "0": // Sair
                                 JOptionPane.showMessageDialog(null, "Concluído");
                                 break;
                         }
