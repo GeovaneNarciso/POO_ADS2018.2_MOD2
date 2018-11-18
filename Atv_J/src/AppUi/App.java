@@ -1,8 +1,7 @@
 package AppUi;
 
 import javax.swing.*;
-
-import Model.Votacao;
+//import Model.*;
 import Services.*;
 import java.util.ArrayList;
 //import java.util.Date;
@@ -18,7 +17,6 @@ public class App {
                 "Informe a opção:";
         return menu;
     }
-
     private static String menuAdmin(){
         String menu;
         menu =  "-----  ADMIN  -----\n" +
@@ -37,12 +35,11 @@ public class App {
                 "Insira o seu token e vote.";
         return menu;
     }
+
     public static void main(String[] args) {
         Sistema s = new Sistema();
         String opSistema = "-1", opAdmin = "-1";
-        boolean obrigatoria, votacaoCriada = false;
-        Votacao v = null;
-
+        boolean obrigatoria;
 
         while (!opSistema.equals("0")){
             opSistema = JOptionPane.showInputDialog(menuSistema());
@@ -57,13 +54,12 @@ public class App {
                                 int votantes = Integer.parseInt(JOptionPane.showInputDialog("Qtd de votantes:"));
                                 String dtInicio = JOptionPane.showInputDialog("Data de início:");
                                 String dtFim = JOptionPane.showInputDialog("Data de encerramento:");
-                                v = s.criaVotacao(tema, votantes, dtInicio, dtFim);
-                                votacaoCriada = true;
+                                s.criaVotacao(tema, votantes, dtInicio, dtFim);
                                 JOptionPane.showMessageDialog(null, "Votação Criada.");
 
                                 break;
                             case "2":
-                                if (votacaoCriada) {
+                                if (s.getVotacao().foiCriada()) {
                                     String titulo = JOptionPane.showInputDialog("Informe a pergunta:");
 
                                     String obrigada = JOptionPane.showInputDialog("Resposta será obrigatória? (S ou N):");
@@ -76,21 +72,21 @@ public class App {
                                             break;
                                         op.add(opcao);
                                     }
-                                    s.recebePergunta(titulo, obrigatoria, op, v);
+                                    s.recebePergunta(titulo, obrigatoria, op, s.getVotacao());
                                 } else
                                     JOptionPane.showMessageDialog(null, "Não existe votação criada.");
 
                                 break;
                             case "3":
-                                if (votacaoCriada) {
-                                    JOptionPane.showMessageDialog(null, v.toString());
-                                    JOptionPane.showMessageDialog(null, v.exibeTokens());
+                                if (s.getVotacao().foiCriada()) {
+                                    JOptionPane.showMessageDialog(null, s.getVotacao().toString());
+                                    JOptionPane.showMessageDialog(null, s.getVotacao().exibeTokens());
                                 }else
                                     JOptionPane.showMessageDialog(null, "Não existe votação criada.");
                                 break;
                             case "4":
-                                if (votacaoCriada) {
-                                    JOptionPane.showMessageDialog(null, v.resultado());
+                                if (s.getVotacao().foiCriada()) {
+                                    JOptionPane.showMessageDialog(null, s.getVotacao().resultado());
                                 }else
                                     JOptionPane.showMessageDialog(null, "Não existe votação criada.");
                                 break;
@@ -101,7 +97,7 @@ public class App {
                     }
                     break;
                 case "2":
-                    if (votacaoCriada) {
+                    if (s.getVotacao().foiCriada()) {
                         JOptionPane.showMessageDialog(null, menuUsuario());
                     }else
                         JOptionPane.showMessageDialog(null, "Não existe votação criada.");

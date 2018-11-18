@@ -25,18 +25,31 @@ public class Votacao {
     public String getTema() {
         return tema;
     }
+
     public String getDtInicio() {
         return dtInicio;
     }
+
     public String getDtFim() {
         return dtFim;
     }
-    public boolean ehCriada() {
+
+    public boolean foiCriada() {
         return criada;
     }
+
+    public ArrayList<Pergunta> getPerguntas() {
+        return perguntas;
+    }
+
+    public ArrayList<Token> getTokens() {
+        return tokens;
+    }
+
     public void addPergunta(Pergunta p){
         this.perguntas.add(p);
     }
+
     public String exibeTokens(){
         String tok = "Tokens: \nCódigo     Usado\n";
         for(Token t : tokens){
@@ -47,6 +60,10 @@ public class Votacao {
                 tok += "N \n";
         }
         return tok;
+    }
+
+    public String votar(int opcao){
+        return "";
     }
     @Override
     public String toString() {
@@ -63,6 +80,7 @@ public class Votacao {
         }
         return votacaoToString;
     }
+
     public String resultado(){
         String resultado = "Resultado: \n";
         for(Pergunta p : perguntas){

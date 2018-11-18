@@ -7,12 +7,15 @@ public class Token {
     public Token(String codigo){
         this.codigo = codigo;
     }
+
     public void usar(){
         this.usado = true;
     }
+
     public String getCodigo() {
         return codigo;
     }
+
     public boolean foiUsado() {
         return usado;
     }
