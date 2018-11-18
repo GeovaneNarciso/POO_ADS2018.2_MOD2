@@ -15,7 +15,7 @@ public class Sistema {
         this.votacao = new Votacao(tema, votantes, dtInicio, dtFim);
     }
 
-    public void recebePergunta(String titulo, boolean obrigatoria, ArrayList<String> opcoes, Votacao v){
+    public void recebePergunta(String titulo, boolean obrigatoria, ArrayList<String> opcoes){
          this.votacao.addPergunta(new Pergunta(titulo, obrigatoria, opcoes));
     }
 

@@ -49,7 +49,7 @@ public class App {
                     while (!opAdmin.equals("0")) {
                         opAdmin = JOptionPane.showInputDialog(menuAdmin());
                         switch (opAdmin) {
-                            case "1":
+                            case "1": //Criar votação
                                 String tema = JOptionPane.showInputDialog("Tema da votação:");
                                 int votantes = Integer.parseInt(JOptionPane.showInputDialog("Qtd de votantes:"));
                                 String dtInicio = JOptionPane.showInputDialog("Data de início:");
@@ -58,7 +58,7 @@ public class App {
                                 JOptionPane.showMessageDialog(null, "Votação Criada.");
 
                                 break;
-                            case "2":
+                            case "2": //Criar pergunta
                                 if (s.getVotacao().foiCriada()) {
                                     String titulo = JOptionPane.showInputDialog("Informe a pergunta:");
 
@@ -72,7 +72,7 @@ public class App {
                                             break;
                                         op.add(opcao);
                                     }
-                                    s.recebePergunta(titulo, obrigatoria, op, s.getVotacao());
+                                    s.recebePergunta(titulo, obrigatoria, op);
                                 } else
                                     JOptionPane.showMessageDialog(null, "Não existe votação criada.");
 
