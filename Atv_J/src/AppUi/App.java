@@ -38,7 +38,7 @@ public class App {
 
     public static void main(String[] args) {
         Sistema s = new Sistema();
-        String opSistema = "-1", opAdmin = "-1";
+        String opSistema = "-1", opAdmin = "-1", token;
         boolean obrigatoria;
 
         while (!opSistema.equals("0")){
@@ -96,9 +96,14 @@ public class App {
                         }
                     }
                     break;
-                case "2":
+                case "2": //Votar
                     if (s.getVotacao().foiCriada()) {
                         JOptionPane.showMessageDialog(null, menuUsuario());
+                        token = JOptionPane.showInputDialog("Token: ");
+                        JOptionPane.showMessageDialog(null, s.validaToken(token));
+                        if(s.validaToken(token).equals("Token válido.")){
+
+                        }
                     }else
                         JOptionPane.showMessageDialog(null, "Não existe votação criada.");
                     break;

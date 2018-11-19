@@ -26,4 +26,15 @@ public class Pergunta {
     public ArrayList<Opcao> getOpcoes() {
         return opcoes;
     }
+
+    @Override
+    public String perguntaToString() {
+        int num = 1;
+        String perguntaToString = " --- " + this.titulo + "\n";
+        for(Opcao o : opcoes) {
+            perguntaToString += num + " - " + o.getDescricao() + "\n";
+            num += 1;
+        }
+        return perguntaToString;
+    }
 }
