@@ -46,6 +46,7 @@ public class App {
 
             switch (opSistema) {
                 case "1":
+                    opAdmin = "-1";
                     while (!opAdmin.equals("0")) {
                         opAdmin = JOptionPane.showInputDialog(menuAdmin());
                         switch (opAdmin) {
@@ -56,7 +57,6 @@ public class App {
                                 String dtFim = JOptionPane.showInputDialog("Data de encerramento:");
                                 s.criaVotacao(tema, votantes, dtInicio, dtFim);
                                 JOptionPane.showMessageDialog(null, "Votação Criada.");
-
                                 break;
                             case "2": //Criar pergunta
                                 if (s.getVotacao().foiCriada()) {
@@ -75,7 +75,6 @@ public class App {
                                     s.recebePergunta(titulo, obrigatoria, op);
                                 } else
                                     JOptionPane.showMessageDialog(null, "Não existe votação criada.");
-
                                 break;
                             case "3": //Exibir votação
                                 if (s.getVotacao().foiCriada()) {
@@ -97,14 +96,13 @@ public class App {
                     }
                     break;
                 case "2": //Votar
-                    if (s.getVotacao().foiCriada()) {
+                    if (s.getVotacao().foiCriada() && s.getVotacao().estaPronta()) {
                         JOptionPane.showMessageDialog(null, menuUsuario());
                         token = JOptionPane.showInputDialog("Token: ");
-                        JOptionPane.showMessageDialog(null, s.validaToken(token));
-                        if(s.validaToken(token).equals("Token válido.")){
+                        String valida = s.validaToken(token);
+                        if(valida.equals("Token válido.")){
                             for(Pergunta p : s.getVotacao().getPerguntas()){
-                                p.perguntaToString();
-                                int numOpcao = Integer.parseInt(JOptionPane.showInputDialog("Informe a opção de voto: "));
+                                int numOpcao = Integer.parseInt(JOptionPane.showInputDialog(p.perguntaToString() + "\nInforme a opção de voto: "));
                                 while (!s.opcaoValida(p, numOpcao)){
                                     JOptionPane.showMessageDialog(null, "Opção inválida, informe novamente: ");
                                     numOpcao = Integer.parseInt(JOptionPane.showInputDialog("Informe a opção de voto: "));
@@ -113,7 +111,7 @@ public class App {
                             }
                         }
                     }else
-                        JOptionPane.showMessageDialog(null, "Não existe votação criada.");
+                        JOptionPane.showMessageDialog(null, "Não existe votação criada ou perguntas.");
                     break;
                 case "0":
                     JOptionPane.showMessageDialog(null, "Encerrado");

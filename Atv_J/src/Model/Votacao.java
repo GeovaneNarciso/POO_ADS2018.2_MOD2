@@ -12,9 +12,10 @@ public class Votacao {
     private ArrayList<Pergunta> perguntas = new ArrayList<>();
     private ArrayList<Token> tokens = new ArrayList<>();
     private int brancos = 0;
+    private boolean pronta;
 
-    public Votacao(String tema, int votantes, String dtInicio, String dtFim) {
-        this.criada = true;
+    public Votacao(boolean criada, String tema, int votantes, String dtInicio, String dtFim) {
+        this.criada = criada;
         this.tema = tema;
         this.dtInicio = dtInicio;
         this.dtFim = dtFim;
@@ -35,6 +36,10 @@ public class Votacao {
         return dtFim;
     }
 
+    public boolean estaPronta() {
+        return pronta;
+    }
+
     public boolean foiCriada() {
         return criada;
     }
@@ -49,6 +54,7 @@ public class Votacao {
 
     public void addPergunta(Pergunta p){
         this.perguntas.add(p);
+        this.pronta = true;
     }
 
     public String exibeTokens(){
@@ -69,7 +75,7 @@ public class Votacao {
         }else{
             for(Pergunta p1 : this.perguntas){
                 if(p1.equals(p)){
-                    p1.getOpcoes().get(opcao).votar();
+                    p1.getOpcoes().get(opcao - 1).votar();
                 }
             }
         }

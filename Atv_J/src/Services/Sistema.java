@@ -7,12 +7,16 @@ import java.util.ArrayList;
 public class Sistema {
     private Votacao votacao;
 
+    public Sistema() {
+        this.votacao = new Votacao(false,"", 0, "", "");
+    }
+
     public Votacao getVotacao() {
         return votacao;
     }
 
     public void criaVotacao(String tema, int votantes, String dtInicio, String dtFim){
-        this.votacao = new Votacao(tema, votantes, dtInicio, dtFim);
+        this.votacao = new Votacao(true, tema, votantes, dtInicio, dtFim);
     }
 
     public void recebePergunta(String titulo, boolean obrigatoria, ArrayList<String> opcoes){
@@ -34,11 +38,8 @@ public class Sistema {
 
     public boolean opcaoValida(Pergunta p, int opcao){
         if(p.ehObrigatoria()){
-            if(opcao >= 1 && opcao < p.getOpcoes().size())
-                return true;
+            return opcao >= 1 && opcao < p.getOpcoes().size();
         }else
-            if(opcao >= 0 && opcao < p.getOpcoes().size())
-                return true;
-        return false;
+            return opcao >= 0 && opcao < p.getOpcoes().size();
     }
 }
