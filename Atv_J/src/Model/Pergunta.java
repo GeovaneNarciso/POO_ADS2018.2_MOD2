@@ -27,7 +27,6 @@ public class Pergunta {
         return opcoes;
     }
 
-    @Override
     public String perguntaToString() {
         int num = 1;
         String perguntaToString = " --- " + this.titulo + "\n";
@@ -35,6 +34,8 @@ public class Pergunta {
             perguntaToString += num + " - " + o.getDescricao() + "\n";
             num += 1;
         }
+        if(!obrigatoria)
+            perguntaToString += "0 - Branco.";
         return perguntaToString;
     }
 }

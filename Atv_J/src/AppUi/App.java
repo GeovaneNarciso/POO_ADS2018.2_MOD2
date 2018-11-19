@@ -1,7 +1,7 @@
 package AppUi;
 
 import javax.swing.*;
-//import Model.*;
+import Model.*;
 import Services.*;
 import java.util.ArrayList;
 //import java.util.Date;
@@ -102,7 +102,15 @@ public class App {
                         token = JOptionPane.showInputDialog("Token: ");
                         JOptionPane.showMessageDialog(null, s.validaToken(token));
                         if(s.validaToken(token).equals("Token válido.")){
-
+                            for(Pergunta p : s.getVotacao().getPerguntas()){
+                                p.perguntaToString();
+                                int numOpcao = Integer.parseInt(JOptionPane.showInputDialog("Informe a opção de voto: "));
+                                while (!s.opcaoValida(p, numOpcao)){
+                                    JOptionPane.showMessageDialog(null, "Opção inválida, informe novamente: ");
+                                    numOpcao = Integer.parseInt(JOptionPane.showInputDialog("Informe a opção de voto: "));
+                                }
+                                s.getVotacao().votar(p, numOpcao);
+                            }
                         }
                     }else
                         JOptionPane.showMessageDialog(null, "Não existe votação criada.");

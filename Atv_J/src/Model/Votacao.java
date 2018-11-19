@@ -11,6 +11,7 @@ public class Votacao {
     private String dtFim;
     private ArrayList<Pergunta> perguntas = new ArrayList<>();
     private ArrayList<Token> tokens = new ArrayList<>();
+    private int brancos = 0;
 
     public Votacao(String tema, int votantes, String dtInicio, String dtFim) {
         this.criada = true;
@@ -62,8 +63,16 @@ public class Votacao {
         return tok;
     }
 
-    public String votar(int opcao){
-        return "";
+    public void votar(Pergunta p, int opcao){
+        if(opcao == 0){
+            this.brancos += 1;
+        }else{
+            for(Pergunta p1 : this.perguntas){
+                if(p1.equals(p)){
+                    p1.getOpcoes().get(opcao).votar();
+                }
+            }
+        }
     }
     @Override
     public String toString() {

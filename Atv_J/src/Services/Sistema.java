@@ -31,4 +31,14 @@ public class Sistema {
         }
         return "Token incorreto.";
     }
+
+    public boolean opcaoValida(Pergunta p, int opcao){
+        if(p.ehObrigatoria()){
+            if(opcao >= 1 && opcao < p.getOpcoes().size())
+                return true;
+        }else
+            if(opcao >= 0 && opcao < p.getOpcoes().size())
+                return true;
+        return false;
+    }
 }
