@@ -98,4 +98,37 @@ public class Sistema {
         cartaoArquivado.get(cArquivado - 1).setArquivado(false);
         cartaoArquivado.get(cArquivado - 1).getLog().add(log);
     }
+
+    public void excluiLista(Sistema s, String opExcluiLista) {
+        int opListaExclui = Integer.parseInt(opExcluiLista);
+        ArrayList<Lista> listaArquivada = new ArrayList<>();
+        ArrayList<Quadro> quadros = s.getQuadros();
+        for (Quadro q : quadros){
+            ArrayList<Lista> listas = q.getLista();
+            for (Lista l : listas){
+                if (l.estaArquivada())
+                    listaArquivada.add(l);
+            }
+        }
+        listaArquivada.remove(opListaExclui - 1);
+    }
+
+    public void excluiCartao(Sistema s, String opExcluiCartao) {
+        int cExcluido = Integer.parseInt(opExcluiCartao);
+        ArrayList<Cartao> cartaoArquivado = new ArrayList<>();
+        ArrayList<Quadro> quadros = s.getQuadros();
+        for (Quadro q : quadros){
+            ArrayList<Lista> listas = q.getLista();
+            for (Lista l : listas){
+                if (!l.estaArquivada()){
+                    ArrayList<Cartao> cartoes = l.getCartoes();
+                    for (Cartao c : cartoes){
+                        if (c.estaArquivado())
+                            cartaoArquivado.add(c);
+                    }
+                }
+            }
+        }
+        cartaoArquivado.remove(cExcluido - 1);
+    }
 }

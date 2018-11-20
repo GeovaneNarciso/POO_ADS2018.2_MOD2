@@ -29,7 +29,9 @@ public class AppUi {
                 "  00 - Voltar\n" +
                 "  01 - Adicionar uma lista\n" +
                 "  02 - Restaurar Lista\n" +
-                "  03 - Restaurar Cartão\n\n";
+                "  03 - Restaurar Cartão\n" +
+                "  04 - Excluir Lista\n" +
+                "  05 - Excluir Cartão\n\n";
         int num = 1;
         ArrayList<Lista> lista = s.getQuadros().get(num - 1).getLista();
         for (Lista l : lista) {
@@ -169,6 +171,14 @@ public class AppUi {
                                 String log = "Usuário restaurou este cartão";
                                 s.restauraCartao(s, opCartaoArquivado, log);
                                 break;
+                            case "04": //Exclui lista.
+                                String opExcluiLista = JOptionPane.showInputDialog(menuListasArquivadas(s));
+                                s.excluiLista(s, opExcluiLista);
+                                break;
+                            case "05": //Exclui cartão.
+                                String opExcluiCartao = JOptionPane.showInputDialog(menuCartoesArquivados(s));
+                                s.excluiCartao(s, opExcluiCartao);
+                                break;
                             case "00":
                                 break;
 
@@ -211,7 +221,6 @@ public class AppUi {
                                                         break;
 
                                                         /* CRIAR:
-                                                        RESTAURAR E LOG
                                                         EXCLUIR
                                                         PARA CARTAO E LISTA*/
                                                 }
