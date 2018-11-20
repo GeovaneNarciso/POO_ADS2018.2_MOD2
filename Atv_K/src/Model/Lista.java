@@ -13,4 +13,8 @@ public class Lista {
     public String getTitulo() {
         return titulo;
     }
+
+    public ArrayList<Cartao> getCartoes() {
+        return cartoes;
+    }
 }

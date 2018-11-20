@@ -29,6 +29,12 @@ public class AppUi {
         for(Lista l : s.getQuadros().get(num - 1).getLista()){
             s1 += Integer.toString(num) + " - Acessar " + l.getTitulo() + "\n";
             num += 1;
+            for (Cartao c : l.getCartoes()){
+                for (String e : c.getEtiquetas()){
+                    s1 += "   #" + e + " ";
+                }
+                s1 += "   | " + c.getTitulo() + " |\n";
+            }
         }
         return s1;
     }

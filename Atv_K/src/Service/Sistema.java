@@ -19,6 +19,6 @@ public class Sistema {
 
     public void adicionaLista(String titulo, String indexQuadro) {
         int index = Integer.parseInt(indexQuadro);
-        this.getQuadros().get(index).getLista().add(new Lista(titulo));
+        this.getQuadros().get(index - 1).getLista().add(new Lista(titulo));
     }
 }
