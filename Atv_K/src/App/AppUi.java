@@ -162,7 +162,6 @@ public class AppUi {
                                                         break;
 
                                                         /* CRIAR:
-                                                        ARQUIVAR E LOG
                                                         RESTAURAR E LOG
                                                         EXCLUIR
                                                         PARA CARTAO E LISTA*/
