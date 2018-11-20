@@ -8,7 +8,7 @@ public class AppUi {
     private static String menuInicio(Sistema s){
         String s1 = "----- TRELLINHO -----\n" +
                 " - INICIO - \n" +
-                "Informe a opção:\n" +
+                "Informe uma opção:\n" +
                 "00 - Sair\n" +
                 "0 - Criar novo quadro\n";
         int num = 1;
@@ -22,7 +22,7 @@ public class AppUi {
         int index = Integer.parseInt(indexQuadro);
         String s1 = "----- TRELLINHO -----\n" +
                 " - " + s.getQuadros().get(index - 1).getNome() + " - \n" +
-                "Informe a opção:\n" +
+                "Informe uma opção:\n" +
                 "00 - Voltar\n" +
                 "0 - Adicionar uma lista\n";
         int num = 1;
