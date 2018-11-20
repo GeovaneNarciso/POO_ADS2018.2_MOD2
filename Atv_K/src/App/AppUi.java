@@ -116,7 +116,7 @@ public class AppUi {
     private static String menuCartoesArquivados(Sistema s){
         String s1 = "----- TRELLINHO -----\n" +
                 " ||| Cartões Arquivados\n\n" +
-                "    Informe uma opção para restaurar (0 - Voltar): \n";
+                "    Informe uma opção para restaurar (00 - Voltar): \n";
         ArrayList<Quadro> quadros = s.getQuadros();
         int num = 1;
         for (Quadro q : quadros){
