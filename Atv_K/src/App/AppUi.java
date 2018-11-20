@@ -6,8 +6,8 @@ import javax.swing.*;
 
 public class AppUi {
     private static String menuInicio(Sistema s){
-        String s1 = "----- TRELLINHO -----\n\n" +
-                "----- INICIO -----\n\n" +
+        String s1 = "----- TRELLINHO -----\n" +
+                " - INICIO - \n" +
                 "Informe a opção:\n" +
                 "00 - Sair\n" +
                 "0 - Criar novo quadro\n";
@@ -20,8 +20,8 @@ public class AppUi {
     }
     private static String menuQuadro(Sistema s, String indexQuadro){
         int index = Integer.parseInt(indexQuadro);
-        String s1 = "----- TRELLINHO -----\n\n" +
-                "----- " + s.getQuadros().get(index - 1).getNome() + "-----\n\n" +
+        String s1 = "----- TRELLINHO -----\n" +
+                " - " + s.getQuadros().get(index - 1).getNome() + " - \n" +
                 "Informe a opção:\n" +
                 "00 - Voltar\n" +
                 "0 - Adicionar uma lista\n";
