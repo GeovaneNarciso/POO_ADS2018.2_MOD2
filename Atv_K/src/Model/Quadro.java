@@ -15,4 +15,7 @@ public class Quadro {
         return nome;
     }
 
+    public ArrayList<Lista> getLista() {
+        return lista;
+    }
 }
