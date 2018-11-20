@@ -144,6 +144,12 @@ public class AppUi {
                                                         break;
                                                     case "0":
                                                         break;
+
+                                                        /* CRIAR:
+                                                        ARQUIVAR E LOG
+                                                        RESTAURAR E LOG
+                                                        EXCLUIR
+                                                        PARA CARTAO E LISTA*/
                                                 }
                                             }
                                     }
