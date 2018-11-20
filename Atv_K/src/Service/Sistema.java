@@ -27,6 +27,13 @@ public class Sistema {
         int indexQ = Integer.parseInt(indexQuadro);
         int indexL = Integer.parseInt(indexLista);
         this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().add(new Cartao(tituloC));
+        ArrayList<Cartao> cartoes = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes();
+        String tituloLista = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getTitulo();
+        for (Cartao c : cartoes){
+            if (c.getTitulo().equals(tituloC)){
+                c.getEtiquetas().add("Usuário adicionou este cartão a " + tituloLista);
+            }
+        }
     }
 
     public void adicionaEtiqueta(String etiqueta, String indexQuadro, String indexLista, String indexCartao) {
