@@ -7,28 +7,27 @@ import javax.swing.*;
 public class AppUi {
     private static String menuInicio(Sistema s) {
         String s1 = "----- TRELLINHO -----\n" +
-                " - INICIO - \n" +
-                "Informe uma opção:\n" +
-                "00 - Sair\n" +
-                "0 - Criar novo quadro\n";
+                " - INICIO - \n\n" +
+                "  Informe uma opção:\n" +
+                "  00 - Sair\n" +
+                "  0 - Criar novo quadro\n";
         int num = 1;
         for (Quadro q : s.getQuadros()) {
-            s1 += Integer.toString(num) + " - Acessar " + q.getNome() + "\n";
+            s1 += "  " + Integer.toString(num) + " - Acessar " + q.getNome() + "\n";
             num += 1;
         }
         return s1;
     }
-
     private static String menuQuadro(Sistema s, String indexQuadro) {
         int index = Integer.parseInt(indexQuadro);
         String s1 = "----- TRELLINHO -----\n" +
-                " - " + s.getQuadros().get(index - 1).getNome() + " - \n" +
-                "Informe uma opção:\n" +
-                "00 - Voltar\n" +
-                "0 - Adicionar uma lista\n";
+                " - " + s.getQuadros().get(index - 1).getNome() + " - \n\n" +
+                "  Informe uma opção:\n" +
+                "  00 - Voltar\n" +
+                "  0 - Adicionar uma lista\n";
         int num = 1;
         for (Lista l : s.getQuadros().get(num - 1).getLista()) {
-            s1 += Integer.toString(num) + " - Acessar " + l.getTitulo() + "\n";
+            s1 += "  " + Integer.toString(num) + " - Acessar " + l.getTitulo() + "\n";
             num += 1;
             for (Cartao c : l.getCartoes()) {
                 for (String e : c.getEtiquetas()) {
@@ -39,19 +38,18 @@ public class AppUi {
         }
         return s1;
     }
-
     private static String menuLista(Sistema s, String indexQuadro, String indexLista) {
         int indexL = Integer.parseInt(indexLista);
         int indexQ = Integer.parseInt(indexQuadro);
 
         String s1 = "----- TRELLINHO -----\n" +
-                " - " + s.getQuadros().get(indexL - 1).getLista().get(indexL - 1).getTitulo() + " - \n" +
-                "Informe uma opção:\n" +
-                "00 - Voltar\n" +
-                "0 - Adicionar uma cartão\n";
+                " - " + s.getQuadros().get(indexL - 1).getLista().get(indexL - 1).getTitulo() + " - \n\n" +
+                "  Informe uma opção:\n" +
+                "  00 - Voltar\n" +
+                "  0 - Adicionar uma cartão\n";
         int num = 1;
         for (Cartao c : s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes()) {
-            s1 += Integer.toString(num) + " - Acessar " + c.getTitulo() + "\n";
+            s1 += "  " + Integer.toString(num) + " - Acessar " + c.getTitulo() + "\n";
             num += 1;
             for (String e : c.getEtiquetas()) {
                 s1 += "   #" + e + " ";
