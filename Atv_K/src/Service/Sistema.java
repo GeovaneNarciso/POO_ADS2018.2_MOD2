@@ -48,4 +48,11 @@ public class Sistema {
         Cartao c = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1);
         c.getLog().add(comentario);
     }
+
+    public void arquivarLista(String indexQuadro, String indexLista) {
+        int indexQ = Integer.parseInt(indexQuadro);
+        int indexL = Integer.parseInt(indexLista);
+        Lista l = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1);
+        l.setArquivada(true);
+    }
 }

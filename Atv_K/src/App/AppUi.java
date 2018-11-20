@@ -27,16 +27,20 @@ public class AppUi {
                 " - " + nomeQuadro + " - \n\n" +
                 "  Informe uma opção:\n" +
                 "  00 - Voltar\n" +
-                "  0 - Adicionar uma lista\n";
+                "  01 - Adicionar uma lista\n" +
+                "  02 - Restaurar item";
         int num = 1;
-        for (Lista l : s.getQuadros().get(num - 1).getLista()) {
-            s1 += "  " + Integer.toString(num) + " - Acessar " + l.getTitulo() + "\n";
-            num += 1;
-            for (Cartao c : l.getCartoes()) {
-                for (String e : c.getEtiquetas()) {
-                    s1 += "   #" + e + " ";
+        ArrayList<Lista> lista = s.getQuadros().get(num - 1).getLista();
+        for (Lista l : lista) {
+            if (!l.estaArquivada()){
+                s1 += "  " + Integer.toString(num) + " - Acessar " + l.getTitulo() + "\n";
+                num += 1;
+                for (Cartao c : l.getCartoes()) {
+                    for (String e : c.getEtiquetas()) {
+                        s1 += "   #" + e + " ";
+                    }
+                    s1 += "   | " + c.getTitulo() + " |\n";
                 }
-                s1 += "   | " + c.getTitulo() + " |\n";
             }
         }
         return s1;
@@ -49,7 +53,8 @@ public class AppUi {
                 " - " + tituloLista + " - \n\n" +
                 "  Informe uma opção:\n" +
                 "  00 - Voltar\n" +
-                "  0 - Adicionar uma cartão\n";
+                "  01 - Adicionar um cartão\n" +
+                "  02 - Arquivar esta lista\n\n";
         int num = 1;
         ArrayList<Cartao> cartoes = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes();
         for (Cartao c : cartoes) {
@@ -107,7 +112,7 @@ public class AppUi {
                     while (!opQuadro.equals("00")) {
                         opQuadro = JOptionPane.showInputDialog(menuQuadro(s, opSistema)); //Exibe o menu quadro.
                         switch (opQuadro) {
-                            case "0": //Adiciona uma lista
+                            case "01": //Adiciona uma lista
                                 String titulo = JOptionPane.showInputDialog("Informe o título da lista: ");
                                 s.adicionaLista(titulo, opSistema);
                                 break;
@@ -120,12 +125,15 @@ public class AppUi {
                                 while (!opLista.equals("00")) {
                                     opLista = JOptionPane.showInputDialog(menuLista(s, opSistema, opQuadro)); //Exibe o menu lista.
                                     switch (opLista) {
-                                        case "0": //Adiciona um cartão.
+                                        case "01": //Adiciona um cartão.
                                             String tituloC = JOptionPane.showInputDialog("Informe o título do cartão: ");
                                             String log = "Usuário adicionou este cartão a " + tituloC;
                                             s.adicionaCartao(tituloC, opSistema, opQuadro, log);
                                             break;
-
+                                        case "02":
+                                            s.arquivarLista(opSistema, opQuadro);
+                                            opLista = "00";
+                                            break;
                                         case "00":
                                             break;
 
