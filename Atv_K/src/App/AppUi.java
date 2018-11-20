@@ -66,10 +66,10 @@ public class AppUi {
         int indexL = Integer.parseInt(indexLista);
         int indexC = Integer.parseInt(indexCartao);
 
-        String tituloCartao = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC).getTitulo();
+        String tituloCartao = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1).getTitulo();
         String tituloLista = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getTitulo();
-        ArrayList<String> etiquetas = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC).getEtiquetas();
-        ArrayList<String> log = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC).getLog();
+        ArrayList<String> etiquetas = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1).getEtiquetas();
+        ArrayList<String> log = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1).getLog();
         Collections.reverse(log);
         String s1 = "----- TRELLINHO -----\n" +
                 " ||| " + tituloCartao + "\n" +
@@ -130,7 +130,7 @@ public class AppUi {
 
                                         default:
                                             String opCartao = "-1"; //opCartao == número da opção do cartão
-                                            while (!opCartao.equals("00")) {
+                                            while (!opCartao.equals("0")) {
                                                 opCartao = JOptionPane.showInputDialog(menuCartao(s, opSistema, opQuadro, opLista)); //Exibe o menu do cartão.
                                                 switch (opCartao) {
                                                     case "1":

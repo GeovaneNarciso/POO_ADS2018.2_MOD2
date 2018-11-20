@@ -32,7 +32,7 @@ public class Sistema {
     public void adicionaEtiqueta(String etiqueta, String indexQuadro, String indexLista, String indexCartao) {
         int indexQ = Integer.parseInt(indexQuadro);
         int indexL = Integer.parseInt(indexLista);
-        int indexC = Integer.parseInt(indexLista);
+        int indexC = Integer.parseInt(indexCartao);
         this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1).getEtiquetas().add("#"+etiqueta);
     }
 }
