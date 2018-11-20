@@ -26,6 +26,6 @@ public class Sistema {
     public void adicionaCartao(String tituloC, String indexQuadro, String indexLista) {
         int indexQ = Integer.parseInt(indexQuadro);
         int indexL = Integer.parseInt(indexLista);
-        this.getQuadros().get(indexQ - 1).getLista().get(indexL).getCartoes().add(new Cartao(tituloC));
+        this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().add(new Cartao(tituloC));
     }
 }

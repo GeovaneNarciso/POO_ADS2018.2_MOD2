@@ -45,7 +45,7 @@ public class AppUi {
         int indexQ = Integer.parseInt(indexQuadro);
 
         String s1 = "----- TRELLINHO -----\n" +
-                " - " + s.getQuadros().get(indexL - 1).getLista().get(indexL).getTitulo() + " - \n" +
+                " - " + s.getQuadros().get(indexL - 1).getLista().get(indexL - 1).getTitulo() + " - \n" +
                 "Informe uma opção:\n" +
                 "00 - Voltar\n" +
                 "0 - Adicionar uma cartão\n";
@@ -91,11 +91,11 @@ public class AppUi {
                             default:
                                 String opLista = "-1";
                                 while (!opLista.equals("00")) {
-                                    opLista = JOptionPane.showInputDialog(menuLista(s, opSistema, opLista)); //Exibe o menu lista.
+                                    opLista = JOptionPane.showInputDialog(menuLista(s, opSistema, opQuadro)); //Exibe o menu lista.
                                     switch (opLista) {
                                         case "0": //Adiciona um cartão.
                                             String tituloC = JOptionPane.showInputDialog("Informe o título do cartão: ");
-                                            s.adicionaCartao(tituloC, opSistema, opLista);
+                                            s.adicionaCartao(tituloC, opSistema, opQuadro);
                                             break;
 
                                         case "00":
