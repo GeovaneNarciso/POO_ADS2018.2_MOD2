@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Cartao {
     private String titulo;
     private ArrayList<String> etiquetas = new ArrayList<>();
-    private ArrayList<String> comentarios = new ArrayList<>();
+    private ArrayList<String> log = new ArrayList<>();
 
     public Cartao(String titulo) {
         this.titulo = titulo;
@@ -19,7 +19,7 @@ public class Cartao {
         return etiquetas;
     }
 
-    public ArrayList<String> getComentarios() {
-        return comentarios;
+    public ArrayList<String> getLog() {
+        return log;
     }
 }

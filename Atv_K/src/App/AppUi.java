@@ -3,6 +3,8 @@ package App;
 import Model.*;
 import Service.*;
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class AppUi {
     private static String menuInicio(Sistema s) {
@@ -20,8 +22,9 @@ public class AppUi {
     }
     private static String menuQuadro(Sistema s, String indexQuadro) {
         int index = Integer.parseInt(indexQuadro);
+        String nomeQuadro = s.getQuadros().get(index - 1).getNome();
         String s1 = "----- TRELLINHO -----\n" +
-                " - " + s.getQuadros().get(index - 1).getNome() + " - \n\n" +
+                " - " + nomeQuadro + " - \n\n" +
                 "  Informe uma opção:\n" +
                 "  00 - Voltar\n" +
                 "  0 - Adicionar uma lista\n";
@@ -41,14 +44,15 @@ public class AppUi {
     private static String menuLista(Sistema s, String indexQuadro, String indexLista) {
         int indexL = Integer.parseInt(indexLista);
         int indexQ = Integer.parseInt(indexQuadro);
-
+        String tituloLista = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getTitulo();
         String s1 = "----- TRELLINHO -----\n" +
-                " - " + s.getQuadros().get(indexL - 1).getLista().get(indexL - 1).getTitulo() + " - \n\n" +
+                " - " + tituloLista + " - \n\n" +
                 "  Informe uma opção:\n" +
                 "  00 - Voltar\n" +
                 "  0 - Adicionar uma cartão\n";
         int num = 1;
-        for (Cartao c : s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes()) {
+        ArrayList<Cartao> cartoes = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes();
+        for (Cartao c : cartoes) {
             s1 += "  " + Integer.toString(num) + " - Acessar " + c.getTitulo() + "\n";
             num += 1;
             for (String e : c.getEtiquetas()) {
@@ -57,11 +61,36 @@ public class AppUi {
         }
         return s1;
     }
+    private static String menuCartao(Sistema s, String indexQuadro, String indexLista, String indexCartao){
+        int indexQ = Integer.parseInt(indexQuadro);
+        int indexL = Integer.parseInt(indexLista);
+        int indexC = Integer.parseInt(indexCartao);
+
+        String tituloCartao = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC).getTitulo();
+        String tituloLista = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getTitulo();
+        ArrayList<String> etiquetas = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC).getEtiquetas();
+        ArrayList<String> log = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC).getLog();
+        Collections.reverse(log);
+        String s1 = "----- TRELLINHO -----\n" +
+                " ||| " + tituloCartao + "\n" +
+                "     na lista " + tituloLista + "\n\n" +
+                "    ETIQUETAS\n" +
+                "    " + etiquetas + "\n\n" +
+                " ||| Atividade\n" +
+                "    ";
+        for (String l : log){
+            s1 += l + "\n";
+        }
+        s1 += "\n    Informe uma opção: \n" +
+                "    1 - Adicionar Etiqueta\n" +
+                "    2 - Adicionar Comentário\n" +
+                "    0 - Voltar\n";
+        return s1;
+    }
 
     public static void main(String[] args) {
         Sistema s = new Sistema();
-        String opSistema = "-1";
-
+        String opSistema = "-1"; // opSistema == número da opção do quadro.
         while (!opSistema.equals("00")) {
             opSistema = JOptionPane.showInputDialog(menuInicio(s)); //Exibe o menu Início.
             switch (opSistema) {
@@ -74,7 +103,7 @@ public class AppUi {
                     break;
 
                 default:
-                    String opQuadro = "-1";
+                    String opQuadro = "-1"; //OpQuadro == número da opção da lista.
                     while (!opQuadro.equals("00")) {
                         opQuadro = JOptionPane.showInputDialog(menuQuadro(s, opSistema)); //Exibe o menu quadro.
                         switch (opQuadro) {
@@ -87,7 +116,7 @@ public class AppUi {
                                 break;
 
                             default:
-                                String opLista = "-1";
+                                String opLista = "-1"; //opLista == número da opção do cartão
                                 while (!opLista.equals("00")) {
                                     opLista = JOptionPane.showInputDialog(menuLista(s, opSistema, opQuadro)); //Exibe o menu lista.
                                     switch (opLista) {
@@ -99,6 +128,18 @@ public class AppUi {
                                         case "00":
                                             break;
 
+                                        default:
+                                            String opCartao = "-1"; //opCartao == número da opção do cartão
+                                            while (!opCartao.equals("00")) {
+                                                opCartao = JOptionPane.showInputDialog(menuCartao(s, opSistema, opQuadro, opLista)); //Exibe o menu do cartão.
+                                                switch (opCartao) {
+                                                    case "1":
+                                                        break;
+
+                                                    case "0":
+                                                        break;
+                                                }
+                                            }
                                     }
                                 }
 
