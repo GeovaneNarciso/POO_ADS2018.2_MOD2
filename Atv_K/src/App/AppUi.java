@@ -116,7 +116,7 @@ public class AppUi {
     private static String menuCartoesArquivados(Sistema s){
         String s1 = "----- TRELLINHO -----\n" +
                 " ||| Cartões Arquivados\n\n" +
-                "    Informe uma opção para restaurar (00 - Voltar): \n";
+                "    Informe uma opção para restaurar (0 - Voltar): \n";
         ArrayList<Quadro> quadros = s.getQuadros();
         int num = 1;
         for (Quadro q : quadros){
@@ -164,6 +164,8 @@ public class AppUi {
                                 break;
                             case "03": //Restaura cartões.
                                 String opCartaoArquivado = JOptionPane.showInputDialog(menuCartoesArquivados(s));
+                                if (opCartaoArquivado.equals("0"))
+                                    break;
                                 String log = "Usuário restaurou este cartão.";
                                 s.restauraCartao(s, opCartaoArquivado, log);
                                 break;
