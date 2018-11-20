@@ -28,4 +28,11 @@ public class Sistema {
         int indexL = Integer.parseInt(indexLista);
         this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().add(new Cartao(tituloC));
     }
+
+    public void adicionaEtiqueta(String etiqueta, String indexQuadro, String indexLista, String indexCartao) {
+        int indexQ = Integer.parseInt(indexQuadro);
+        int indexL = Integer.parseInt(indexLista);
+        int indexC = Integer.parseInt(indexLista);
+        this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1).getEtiquetas().add("#"+etiqueta);
+    }
 }

@@ -134,8 +134,11 @@ public class AppUi {
                                                 opCartao = JOptionPane.showInputDialog(menuCartao(s, opSistema, opQuadro, opLista)); //Exibe o menu do cartão.
                                                 switch (opCartao) {
                                                     case "1":
+                                                        String etiqueta = JOptionPane.showInputDialog("Informe o nome da etiqueta: ");
+                                                        s.adicionaEtiqueta(etiqueta, opSistema, opQuadro, opLista);
                                                         break;
-
+                                                    case "2":
+                                                        break;
                                                     case "0":
                                                         break;
                                                 }
