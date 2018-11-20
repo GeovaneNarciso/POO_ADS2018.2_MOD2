@@ -33,7 +33,7 @@ public class AppUi {
                 "  04 - Excluir Lista\n" +
                 "  05 - Excluir Cartão\n\n";
         int num = 1;
-        ArrayList<Lista> lista = s.getQuadros().get(num - 1).getLista();
+        ArrayList<Lista> lista = s.getQuadros().get(index - 1).getLista();
         for (Lista l : lista) {
             if (!l.estaArquivada()){
                 s1 += "  " + Integer.toString(num) + " - Acessar " + l.getTitulo() + "\n";
@@ -41,9 +41,9 @@ public class AppUi {
                 for (Cartao c : l.getCartoes()) {
                     for (String e : c.getEtiquetas()) {
                         s1 += "   #" + e + " ";
+                        if (!c.estaArquivado())
+                            s1 += "   | " + c.getTitulo() + " |\n";
                     }
-                    if (!c.estaArquivado())
-                        s1 += "   | " + c.getTitulo() + " |\n";
                 }
             }
         }
