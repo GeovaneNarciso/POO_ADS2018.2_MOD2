@@ -28,7 +28,8 @@ public class AppUi {
                 "  Informe uma opção:\n" +
                 "  00 - Voltar\n" +
                 "  01 - Adicionar uma lista\n" +
-                "  02 - Restaurar item\n\n";
+                "  02 - Restaurar Lista\n" +
+                "  03 - Restaurar Cartão\n\n";
         int num = 1;
         ArrayList<Lista> lista = s.getQuadros().get(num - 1).getLista();
         for (Lista l : lista) {
@@ -100,13 +101,34 @@ public class AppUi {
                 " ||| Listas Arquivadas\n\n" +
                 "    Informe uma opção para restaurar (0 - Voltar): \n";
         ArrayList<Quadro> quadros = s.getQuadros();
+        int num = 1;
         for (Quadro q : quadros){
             ArrayList<Lista> listas = q.getLista();
-            int num = 1;
             for (Lista l : listas){
                 if (l.estaArquivada())
                     s1 += "    " + num + " - " + l.getTitulo() + " (Lista)\n";
                 num += 1;
+            }
+        }
+        return s1;
+    }
+    private static String menuCartoesArquivados(Sistema s){
+        String s1 = "----- TRELLINHO -----\n" +
+                " ||| Cartões Arquivados\n\n" +
+                "    Informe uma opção para restaurar (0 - Voltar): \n";
+        ArrayList<Quadro> quadros = s.getQuadros();
+        int num = 1;
+        for (Quadro q : quadros){
+            ArrayList<Lista> listas = q.getLista();
+            for (Lista l : listas){
+                if (!l.estaArquivada()){
+                    ArrayList<Cartao> cartoes = l.getCartoes();
+                    for (Cartao c : cartoes){
+                        if (c.estaArquivado())
+                            s1 += "    " + num + " - " + c.getTitulo() + " (Cartão)\n";
+                        num += 1;
+                    }
+                }
             }
         }
         return s1;
@@ -131,13 +153,18 @@ public class AppUi {
                     while (!opQuadro.equals("00")) {
                         opQuadro = JOptionPane.showInputDialog(menuQuadro(s, opSistema)); //Exibe o menu quadro.
                         switch (opQuadro) {
-                            case "01": //Adiciona uma lista
+                            case "01": //Adiciona uma lista.
                                 String titulo = JOptionPane.showInputDialog("Informe o título da lista: ");
                                 s.adicionaLista(titulo, opSistema);
                                 break;
                             case "02": //Restaura listas.
                                 String opListaArquivada = JOptionPane.showInputDialog(menuListasArquivadas(s));
                                 s.restauraLista(s, opListaArquivada);
+                                break;
+                            case "03": //Restaura cartões.
+                                String opCartaoArquivado = JOptionPane.showInputDialog(menuCartoesArquivados(s));
+                                String log = "Usuário restaurou este cartão."
+                                s.restauraCartao(s, opCartaoArquivado, log);
                                 break;
                             case "00":
                                 break;

@@ -67,7 +67,6 @@ public class Sistema {
 
     public void restauraLista(Sistema s, String opListaArquivada) {
         int lArquivada = Integer.parseInt(opListaArquivada);
-
         ArrayList<Lista> listaArquivada = new ArrayList<>();
         ArrayList<Quadro> quadros = s.getQuadros();
         for (Quadro q : quadros){
@@ -77,6 +76,26 @@ public class Sistema {
                     listaArquivada.add(l);
             }
         }
-        listaArquivada.get(lArquivada).setArquivada(false);
+        listaArquivada.get(lArquivada - 1).setArquivada(false);
+    }
+
+    public void restauraCartao(Sistema s, String opCartaoArquivado, String log) {
+        int cArquivado = Integer.parseInt(opCartaoArquivado);
+        ArrayList<Cartao> cartaoArquivado = new ArrayList<>();
+        ArrayList<Quadro> quadros = s.getQuadros();
+        for (Quadro q : quadros){
+            ArrayList<Lista> listas = q.getLista();
+            for (Lista l : listas){
+                if (!l.estaArquivada()){
+                    ArrayList<Cartao> cartoes = l.getCartoes();
+                    for (Cartao c : cartoes){
+                        if (c.estaArquivado())
+                            cartaoArquivado.add(c);
+                    }
+                }
+            }
+        }
+        cartaoArquivado.get(cArquivado - 1).setArquivado(false);
+        cartaoArquivado.get(cArquivado - 1).getLog().add(log);
     }
 }
