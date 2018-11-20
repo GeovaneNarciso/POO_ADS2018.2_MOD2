@@ -31,7 +31,7 @@ public class Sistema {
         String tituloLista = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getTitulo();
         for (Cartao c : cartoes){
             if (c.getTitulo().equals(tituloC)){
-                c.getEtiquetas().add("Usuário adicionou este cartão a " + tituloLista);
+                c.getLog().add("Usuário adicionou este cartão a " + tituloLista);
             }
         }
     }
