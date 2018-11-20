@@ -40,7 +40,8 @@ public class AppUi {
                     for (String e : c.getEtiquetas()) {
                         s1 += "   #" + e + " ";
                     }
-                    s1 += "   | " + c.getTitulo() + " |\n";
+                    if (!c.estaArquivado())
+                        s1 += "   | " + c.getTitulo() + " |\n";
                 }
             }
         }
