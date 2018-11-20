@@ -1,5 +1,6 @@
 package Service;
 
+import Model.Lista;
 import Model.Quadro;
 
 import java.util.ArrayList;
@@ -16,7 +17,8 @@ public class Sistema {
     }
 
 
-    public void adicionaLista(String s, String indexQuadro) {
-
+    public void adicionaLista(String titulo, String indexQuadro) {
+        int index = Integer.parseInt(indexQuadro);
+        this.getQuadros().get(index).getLista().add(new Lista(titulo));
     }
 }
