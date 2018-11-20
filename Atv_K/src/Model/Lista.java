@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Lista {
     private String titulo;
+    private boolean arquivada = false;
     private ArrayList<Cartao> cartoes = new ArrayList<>();
 
     public Lista(String titulo) {
@@ -16,5 +17,13 @@ public class Lista {
 
     public ArrayList<Cartao> getCartoes() {
         return cartoes;
+    }
+
+    public boolean estaArquivada() {
+        return arquivada;
+    }
+
+    public void setArquivada(boolean arquivada) {
+        this.arquivada = arquivada;
     }
 }
