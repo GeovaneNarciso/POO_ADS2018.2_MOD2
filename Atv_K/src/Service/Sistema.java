@@ -15,4 +15,8 @@ public class Sistema {
         this.quadros.add(new Quadro(nome));
     }
 
+
+    public void adicionaLista(String s, String indexQuadro) {
+
+    }
 }

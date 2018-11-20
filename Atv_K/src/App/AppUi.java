@@ -38,21 +38,22 @@ public class AppUi {
         String opSistema = "-1";
 
         while (!opSistema.equals("00")){
-            opSistema = JOptionPane.showInputDialog(menuInicio(s));
+            opSistema = JOptionPane.showInputDialog(menuInicio(s)); //Exibe o menu Início.
             switch (opSistema){
-                case "0":
+                case "0": //Cria um quadro.
                     String nome = JOptionPane.showInputDialog("Informe um nome para o quadro: ");
                     s.criaQuadro(nome);
                     break;
-                case "00":
+                case "00": //Sair/encerra.
                     break;
                 default:
                     String opQuadro = "-1";
                     while (!opQuadro.equals("00")){
-                        opQuadro = JOptionPane.showInputDialog(menuQuadro(s, opSistema));
+                        opQuadro = JOptionPane.showInputDialog(menuQuadro(s, opSistema)); //Exibe o menu quadros.
                         switch (opQuadro){
-                            case "0":
-                                JOptionPane.showMessageDialog(null, "alalalal");
+                            case "0": //Adiciona uma lista
+                                String titulo = JOptionPane.showInputDialog("Informe o título da lista: ");
+                                s.adicionaLista(titulo, opSistema);
                                 break;
                             case "00":
                                 break;
