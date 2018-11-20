@@ -163,7 +163,7 @@ public class AppUi {
                                 break;
                             case "03": //Restaura cartões.
                                 String opCartaoArquivado = JOptionPane.showInputDialog(menuCartoesArquivados(s));
-                                String log = "Usuário restaurou este cartão."
+                                String log = "Usuário restaurou este cartão.";
                                 s.restauraCartao(s, opCartaoArquivado, log);
                                 break;
                             case "00":
@@ -176,7 +176,7 @@ public class AppUi {
                                     switch (opLista) {
                                         case "01": //Adiciona um cartão.
                                             String tituloC = JOptionPane.showInputDialog("Informe o título do cartão: ");
-                                            String log = "Usuário adicionou este cartão a " + tituloC;
+                                            log = "Usuário adicionou este cartão a " + tituloC;
                                             s.adicionaCartao(tituloC, opSistema, opQuadro, log);
                                             break;
                                         case "02": //Arquiva a lista.
