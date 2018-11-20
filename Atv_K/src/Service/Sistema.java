@@ -23,15 +23,14 @@ public class Sistema {
         this.getQuadros().get(index - 1).getLista().add(new Lista(titulo));
     }
 
-    public void adicionaCartao(String tituloC, String indexQuadro, String indexLista) {
+    public void adicionaCartao(String tituloC, String indexQuadro, String indexLista, String log) {
         int indexQ = Integer.parseInt(indexQuadro);
         int indexL = Integer.parseInt(indexLista);
         this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().add(new Cartao(tituloC));
         ArrayList<Cartao> cartoes = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes();
-        String tituloLista = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getTitulo();
         for (Cartao c : cartoes){
             if (c.getTitulo().equals(tituloC)){
-                c.getLog().add("Usuário adicionou este cartão a " + tituloLista);
+                c.getLog().add(log);
             }
         }
     }
@@ -41,5 +40,13 @@ public class Sistema {
         int indexL = Integer.parseInt(indexLista);
         int indexC = Integer.parseInt(indexCartao);
         this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1).getEtiquetas().add("#"+etiqueta);
+    }
+
+    public void adicionaComentario(String comentario, String indexQuadro, String indexLista, String indexCartao) {
+        int indexQ = Integer.parseInt(indexQuadro);
+        int indexL = Integer.parseInt(indexLista);
+        int indexC = Integer.parseInt(indexCartao);
+        Cartao c = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1);
+        c.getLog().add(comentario);
     }
 }

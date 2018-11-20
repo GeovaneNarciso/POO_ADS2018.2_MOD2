@@ -122,7 +122,8 @@ public class AppUi {
                                     switch (opLista) {
                                         case "0": //Adiciona um cartão.
                                             String tituloC = JOptionPane.showInputDialog("Informe o título do cartão: ");
-                                            s.adicionaCartao(tituloC, opSistema, opQuadro);
+                                            String log = "Usuário adicionou este cartão a " + tituloC;
+                                            s.adicionaCartao(tituloC, opSistema, opQuadro, log);
                                             break;
 
                                         case "00":
@@ -138,6 +139,8 @@ public class AppUi {
                                                         s.adicionaEtiqueta(etiqueta, opSistema, opQuadro, opLista);
                                                         break;
                                                     case "2":
+                                                        String comentario = JOptionPane.showInputDialog("Escreva um comentário: ");
+                                                        s.adicionaComentario("Usuário comentou: " + comentario, opSistema, opQuadro, opLista);
                                                         break;
                                                     case "0":
                                                         break;
