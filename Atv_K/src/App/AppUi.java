@@ -166,7 +166,7 @@ public class AppUi {
                                 String opCartaoArquivado = JOptionPane.showInputDialog(menuCartoesArquivados(s));
                                 if (opCartaoArquivado.equals("0"))
                                     break;
-                                String log = "Usuário restaurou este cartão.";
+                                String log = "Usuário restaurou este cartão";
                                 s.restauraCartao(s, opCartaoArquivado, log);
                                 break;
                             case "00":
