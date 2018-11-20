@@ -7,6 +7,10 @@ import java.util.ArrayList;
 public class Sistema {
     private ArrayList<Quadro> quadros = new ArrayList<>();
 
+    public ArrayList<Quadro> getQuadros() {
+        return quadros;
+    }
+
     public String exibeTituloQuadros() {
         int num = 1;
         String s = "";
@@ -20,4 +24,5 @@ public class Sistema {
     public void criaQuadro(String nome){
         this.quadros.add(new Quadro(nome));
     }
+
 }

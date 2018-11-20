@@ -14,4 +14,5 @@ public class Quadro {
     public String getNome() {
         return nome;
     }
+
 }

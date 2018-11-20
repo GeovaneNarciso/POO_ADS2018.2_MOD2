@@ -11,6 +11,15 @@ public class AppUi {
                 "00 - Sair\n" +
                 "0 - Criar novo quadro\n";
     }
+    private static String menuQuadro(Sistema s, String indexQuadro){
+        int index = Integer.parseInt(indexQuadro);
+        return "----- TRELLINHO -----\n\n" +
+                "----- " + s.getQuadros().get(index).getNome() + "-----\n\n" +
+                "Informe a opção:\n" +
+                "00 - Voltar\n" +
+                "0 - Adicionar uma lista\n";
+    }
+
     public static void main(String[] args) {
         Sistema s = new Sistema();
         String opSistema = "-1";
@@ -24,6 +33,11 @@ public class AppUi {
                     break;
                 case "00":
                     break;
+                default:
+                    String opQuadro = "-1";
+                    while (!opQuadro.equals("0")){
+
+                    }
             }
         }
     }
