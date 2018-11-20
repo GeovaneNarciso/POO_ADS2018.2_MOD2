@@ -95,6 +95,22 @@ public class AppUi {
                 "    0 - Voltar\n";
         return s1;
     }
+    private static String menuListasArquivadas(Sistema s){
+        String s1 = "----- TRELLINHO -----\n" +
+                " ||| Listas Arquivadas\n\n" +
+                "    Informe uma opção para restaurar (0 - Voltar): \n";
+        ArrayList<Quadro> quadros = s.getQuadros();
+        for (Quadro q : quadros){
+            ArrayList<Lista> listas = q.getLista();
+            int num = 1;
+            for (Lista l : listas){
+                if (l.estaArquivada())
+                    s1 += "    " + num + " - " + l.getTitulo() + " (Lista)\n";
+                num += 1;
+            }
+        }
+        return s1;
+    }
 
     public static void main(String[] args) {
         Sistema s = new Sistema();
@@ -119,7 +135,10 @@ public class AppUi {
                                 String titulo = JOptionPane.showInputDialog("Informe o título da lista: ");
                                 s.adicionaLista(titulo, opSistema);
                                 break;
-
+                            case "02": //Restaura listas.
+                                String opListaArquivada = JOptionPane.showInputDialog(menuListasArquivadas(s));
+                                s.restauraLista(s, opListaArquivada);
+                                break;
                             case "00":
                                 break;
 
@@ -133,7 +152,7 @@ public class AppUi {
                                             String log = "Usuário adicionou este cartão a " + tituloC;
                                             s.adicionaCartao(tituloC, opSistema, opQuadro, log);
                                             break;
-                                        case "02":
+                                        case "02": //Arquiva a lista.
                                             s.arquivarLista(opSistema, opQuadro);
                                             opLista = "00";
                                             break;

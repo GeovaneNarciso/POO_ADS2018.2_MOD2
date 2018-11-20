@@ -64,4 +64,19 @@ public class Sistema {
         c.setArquivado(true);
         c.getLog().add(log);
     }
+
+    public void restauraLista(Sistema s, String opListaArquivada) {
+        int lArquivada = Integer.parseInt(opListaArquivada);
+
+        ArrayList<Lista> listaArquivada = new ArrayList<>();
+        ArrayList<Quadro> quadros = s.getQuadros();
+        for (Quadro q : quadros){
+            ArrayList<Lista> listas = q.getLista();
+            for (Lista l : listas){
+                if (l.estaArquivada())
+                    listaArquivada.add(l);
+            }
+        }
+        listaArquivada.get(lArquivada).setArquivada(false);
+    }
 }
