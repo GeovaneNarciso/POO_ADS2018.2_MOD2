@@ -162,6 +162,8 @@ public class AppUi {
                                 break;
                             case "02": //Restaura listas.
                                 String opListaArquivada = JOptionPane.showInputDialog(menuListasArquivadas(s));
+                                if (opListaArquivada.equals("0"))
+                                    break;
                                 s.restauraLista(s, opListaArquivada);
                                 break;
                             case "03": //Restaura cartões.
@@ -173,10 +175,14 @@ public class AppUi {
                                 break;
                             case "04": //Exclui lista.
                                 String opExcluiLista = JOptionPane.showInputDialog(menuListasArquivadas(s));
+                                if (opExcluiLista.equals("0"))
+                                    break;
                                 s.excluiLista(s, opExcluiLista);
                                 break;
                             case "05": //Exclui cartão.
                                 String opExcluiCartao = JOptionPane.showInputDialog(menuCartoesArquivados(s));
+                                if (opExcluiCartao.equals("0"))
+                                    break;
                                 s.excluiCartao(s, opExcluiCartao);
                                 break;
                             case "00":
@@ -219,10 +225,6 @@ public class AppUi {
                                                         break;
                                                     case "0":
                                                         break;
-
-                                                        /* CRIAR:
-                                                        EXCLUIR
-                                                        PARA CARTAO E LISTA*/
                                                 }
                                             }
                                     }
