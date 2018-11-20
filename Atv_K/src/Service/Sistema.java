@@ -55,4 +55,13 @@ public class Sistema {
         Lista l = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1);
         l.setArquivada(true);
     }
+
+    public void arquivarCartao(String indexQuadro, String indexLista, String indexCartao, String log) {
+        int indexQ = Integer.parseInt(indexQuadro);
+        int indexL = Integer.parseInt(indexLista);
+        int indexC = Integer.parseInt(indexCartao);
+        Cartao c = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1);
+        c.setArquivado(true);
+        c.getLog().add(log);
+    }
 }

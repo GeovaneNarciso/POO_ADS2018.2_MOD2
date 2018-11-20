@@ -28,7 +28,7 @@ public class AppUi {
                 "  Informe uma opção:\n" +
                 "  00 - Voltar\n" +
                 "  01 - Adicionar uma lista\n" +
-                "  02 - Restaurar item";
+                "  02 - Restaurar item\n\n";
         int num = 1;
         ArrayList<Lista> lista = s.getQuadros().get(num - 1).getLista();
         for (Lista l : lista) {
@@ -58,10 +58,12 @@ public class AppUi {
         int num = 1;
         ArrayList<Cartao> cartoes = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes();
         for (Cartao c : cartoes) {
-            s1 += "  " + Integer.toString(num) + " - Acessar " + c.getTitulo() + "\n";
-            num += 1;
-            for (String e : c.getEtiquetas()) {
-                s1 += "   #" + e + " ";
+            if (!c.estaArquivado()){
+                s1 += "  " + Integer.toString(num) + " - Acessar " + c.getTitulo() + "\n";
+                num += 1;
+                for (String e : c.getEtiquetas()) {
+                    s1 += "   #" + e + " ";
+                }
             }
         }
         return s1;
@@ -89,6 +91,7 @@ public class AppUi {
         s1 += "\n    Informe uma opção: \n" +
                 "    1 - Adicionar Etiqueta\n" +
                 "    2 - Adicionar Comentário\n" +
+                "    3 - Arquivar\n" +
                 "    0 - Voltar\n";
         return s1;
     }
@@ -149,6 +152,11 @@ public class AppUi {
                                                     case "2":
                                                         String comentario = JOptionPane.showInputDialog("Escreva um comentário: ");
                                                         s.adicionaComentario("Usuário comentou: " + comentario, opSistema, opQuadro, opLista);
+                                                        break;
+                                                    case "3":
+                                                        log = "Usuário arquivou este cartão";
+                                                        s.arquivarCartao(opSistema, opQuadro, opLista, log);
+                                                        opCartao = "0";
                                                         break;
                                                     case "0":
                                                         break;
