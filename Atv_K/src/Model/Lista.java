@@ -26,4 +26,12 @@ public class Lista {
     public void setArquivada(boolean arquivada) {
         this.arquivada = arquivada;
     }
+
+    public void addCartao(String titulo) {
+        this.cartoes.add(new Cartao(titulo));
+    }
+
+    public void rmCartao(int indexC) {
+        this.cartoes.remove(indexC);
+    }
 }

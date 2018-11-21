@@ -40,7 +40,7 @@ public class AppUi {
                 num += 1;
                 for (Cartao c : l.getCartoes()) {
                     for (String e : c.getEtiquetas()) {
-                        s1 += "   #" + e + " ";
+                        s1 += "   " + e + " \n";
                         if (!c.estaArquivado())
                             s1 += "   | " + c.getTitulo() + " |\n";
                     }
@@ -63,10 +63,10 @@ public class AppUi {
         ArrayList<Cartao> cartoes = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes();
         for (Cartao c : cartoes) {
             if (!c.estaArquivado()){
-                s1 += "  " + Integer.toString(num) + " - Acessar " + c.getTitulo() + "\n";
+                s1 += "  " + num + " - Acessar " + c.getTitulo() + "\n";
                 num += 1;
                 for (String e : c.getEtiquetas()) {
-                    s1 += "   #" + e + " ";
+                    s1 += "   " + e + " ";
                 }
             }
         }
@@ -99,39 +99,32 @@ public class AppUi {
                 "    0 - Voltar\n";
         return s1;
     }
-    private static String menuListasArquivadas(Sistema s){
+    private static String menuListasArquivadas(Sistema s, String indexQuadro){
+        int index = Integer.parseInt(indexQuadro) - 1;
+        ArrayList<Lista> listas = s.getQuadros().get(index).getLista();
         String s1 = "----- TRELLINHO -----\n" +
                 " ||| Listas Arquivadas\n\n" +
                 "    Informe uma opção para restaurar (0 - Voltar): \n";
-        ArrayList<Quadro> quadros = s.getQuadros();
         int num = 1;
-        for (Quadro q : quadros){
-            ArrayList<Lista> listas = q.getLista();
-            for (Lista l : listas){
-                if (l.estaArquivada())
-                    s1 += "    " + num + " - " + l.getTitulo() + " (Lista)\n";
-                num += 1;
-            }
+        for (Lista l : listas){
+            if (l.estaArquivada())
+                s1 += "    " + num + " - " + l.getTitulo() + " (Lista)\n";
+            num += 1;
         }
         return s1;
     }
-    private static String menuCartoesArquivados(Sistema s){
+    private static String menuCartoesArquivados(Sistema s, String indexQuadro, String indexLista){
+        int indexL = Integer.parseInt(indexLista) - 1;
+        int indexQ = Integer.parseInt(indexQuadro) - 1;
+        ArrayList<Cartao> cartoes = s.getQuadros().get(indexQ).getLista().get(indexL).getCartoes();
         String s1 = "----- TRELLINHO -----\n" +
                 " ||| Cartões Arquivados\n\n" +
                 "    Informe uma opção para restaurar (0 - Voltar): \n";
-        ArrayList<Quadro> quadros = s.getQuadros();
         int num = 1;
-        for (Quadro q : quadros){
-            ArrayList<Lista> listas = q.getLista();
-            for (Lista l : listas){
-                if (!l.estaArquivada()){
-                    ArrayList<Cartao> cartoes = l.getCartoes();
-                    for (Cartao c : cartoes){
-                        if (c.estaArquivado())
-                            s1 += "    " + num + " - " + c.getTitulo() + " (Cartão)\n";
-                        num += 1;
-                    }
-                }
+        for (Cartao c : cartoes) {
+            if (c.estaArquivado()){
+                s1 += "  " + num + " - Acessar " + c.getTitulo() + "\n";
+                num += 1;
             }
         }
         return s1;
@@ -161,29 +154,28 @@ public class AppUi {
                                 s.adicionaLista(titulo, opSistema);
                                 break;
                             case "02": //Restaura listas.
-                                String opListaArquivada = JOptionPane.showInputDialog(menuListasArquivadas(s));
+                                String opListaArquivada = JOptionPane.showInputDialog(menuListasArquivadas(s, opSistema));
                                 if (opListaArquivada.equals("0"))
                                     break;
-                                s.restauraLista(s, opListaArquivada);
+                                s.restauraLista(opSistema, opListaArquivada);
                                 break;
                             case "03": //Restaura cartões.
-                                String opCartaoArquivado = JOptionPane.showInputDialog(menuCartoesArquivados(s));
+                                String opCartaoArquivado = JOptionPane.showInputDialog(menuCartoesArquivados(s, opSistema, opQuadro));
                                 if (opCartaoArquivado.equals("0"))
                                     break;
-                                String log = "Usuário restaurou este cartão";
-                                s.restauraCartao(s, opCartaoArquivado, log);
+                                s.restauraCartao(opSistema, opQuadro, opCartaoArquivado);
                                 break;
                             case "04": //Exclui lista.
-                                String opExcluiLista = JOptionPane.showInputDialog(menuListasArquivadas(s));
+                                String opExcluiLista = JOptionPane.showInputDialog(menuListasArquivadas(s, opSistema));
                                 if (opExcluiLista.equals("0"))
                                     break;
-                                s.excluiLista(s, opExcluiLista);
+                                s.excluiLista(opSistema, opExcluiLista);
                                 break;
                             case "05": //Exclui cartão.
-                                String opExcluiCartao = JOptionPane.showInputDialog(menuCartoesArquivados(s));
+                                String opExcluiCartao = JOptionPane.showInputDialog(menuCartoesArquivados(s, opSistema, opQuadro));
                                 if (opExcluiCartao.equals("0"))
                                     break;
-                                s.excluiCartao(s, opExcluiCartao);
+                                s.excluiCartao(opSistema, opQuadro, opExcluiCartao);
                                 break;
                             case "00":
                                 break;
@@ -194,9 +186,8 @@ public class AppUi {
                                     opLista = JOptionPane.showInputDialog(menuLista(s, opSistema, opQuadro)); //Exibe o menu lista.
                                     switch (opLista) {
                                         case "01": //Adiciona um cartão.
-                                            String tituloC = JOptionPane.showInputDialog("Informe o título do cartão: ");
-                                            log = "Usuário adicionou este cartão a " + tituloC;
-                                            s.adicionaCartao(tituloC, opSistema, opQuadro, log);
+                                            titulo = JOptionPane.showInputDialog("Informe o título do cartão: ");
+                                            s.adicionaCartao(titulo, opSistema, opQuadro);
                                             break;
                                         case "02": //Arquiva a lista.
                                             s.arquivarLista(opSistema, opQuadro);
@@ -211,16 +202,15 @@ public class AppUi {
                                                 opCartao = JOptionPane.showInputDialog(menuCartao(s, opSistema, opQuadro, opLista)); //Exibe o menu do cartão.
                                                 switch (opCartao) {
                                                     case "1":
-                                                        String etiqueta = JOptionPane.showInputDialog("Informe o nome da etiqueta: ");
-                                                        s.adicionaEtiqueta(etiqueta, opSistema, opQuadro, opLista);
+                                                        nome = JOptionPane.showInputDialog("Informe o nome da etiqueta: ");
+                                                        s.adicionaEtiqueta(nome, opSistema, opQuadro, opLista);
                                                         break;
                                                     case "2":
                                                         String comentario = JOptionPane.showInputDialog("Escreva um comentário: ");
-                                                        s.adicionaComentario("Usuário comentou: " + comentario, opSistema, opQuadro, opLista);
+                                                        s.adicionaComentario(comentario, opSistema, opQuadro, opLista);
                                                         break;
                                                     case "3":
-                                                        log = "Usuário arquivou este cartão";
-                                                        s.arquivarCartao(opSistema, opQuadro, opLista, log);
+                                                        s.arquivarCartao(opSistema, opQuadro, opLista);
                                                         opCartao = "0";
                                                         break;
                                                     case "0":

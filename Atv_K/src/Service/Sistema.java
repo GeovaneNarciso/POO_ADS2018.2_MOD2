@@ -19,116 +19,69 @@ public class Sistema {
 
     public void adicionaLista(String titulo, String indexQuadro) {
         int index = Integer.parseInt(indexQuadro);
-        this.getQuadros().get(index - 1).getLista().add(new Lista(titulo));
+        this.quadros.get(index - 1).addLista(titulo);
     }
 
-    public void adicionaCartao(String tituloC, String indexQuadro, String indexLista, String log) {
-        int indexQ = Integer.parseInt(indexQuadro);
-        int indexL = Integer.parseInt(indexLista);
-        this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().add(new Cartao(tituloC));
-        ArrayList<Cartao> cartoes = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes();
-        for (Cartao c : cartoes){
-            if (c.getTitulo().equals(tituloC)){
-                c.getLog().add(log);
-            }
-        }
+    public void adicionaCartao(String titulo, String indexQuadro, String indexLista) {
+        int indexQ = Integer.parseInt(indexQuadro) - 1;
+        int indexL = Integer.parseInt(indexLista) -1 ;
+        this.getQuadros().get(indexQ).getLista().get(indexL).addCartao(titulo);
     }
 
     public void adicionaEtiqueta(String etiqueta, String indexQuadro, String indexLista, String indexCartao) {
-        int indexQ = Integer.parseInt(indexQuadro);
-        int indexL = Integer.parseInt(indexLista);
-        int indexC = Integer.parseInt(indexCartao);
-        this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1).getEtiquetas().add("#"+etiqueta);
+        int indexQ = Integer.parseInt(indexQuadro) - 1;
+        int indexL = Integer.parseInt(indexLista) - 1;
+        int indexC = Integer.parseInt(indexCartao) - 1;
+        this.quadros.get(indexQ).getLista().get(indexL).getCartoes().get(indexC).addEtiqueta("#"+etiqueta);
     }
 
     public void adicionaComentario(String comentario, String indexQuadro, String indexLista, String indexCartao) {
-        int indexQ = Integer.parseInt(indexQuadro);
-        int indexL = Integer.parseInt(indexLista);
-        int indexC = Integer.parseInt(indexCartao);
-        Cartao c = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1);
-        c.getLog().add(comentario);
+        int indexQ = Integer.parseInt(indexQuadro) - 1;
+        int indexL = Integer.parseInt(indexLista) - 1;
+        int indexC = Integer.parseInt(indexCartao) - 1;
+        this.quadros.get(indexQ).getLista().get(indexL).getCartoes().get(indexC).addLog("Usuário comentou: " + comentario);
     }
 
     public void arquivarLista(String indexQuadro, String indexLista) {
-        int indexQ = Integer.parseInt(indexQuadro);
-        int indexL = Integer.parseInt(indexLista);
-        Lista l = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1);
-        l.setArquivada(true);
+        int indexQ = Integer.parseInt(indexQuadro) - 1;
+        int indexL = Integer.parseInt(indexLista) - 1;
+        this.quadros.get(indexQ).getLista().get(indexL).setArquivada(true);
     }
 
-    public void arquivarCartao(String indexQuadro, String indexLista, String indexCartao, String log) {
-        int indexQ = Integer.parseInt(indexQuadro);
-        int indexL = Integer.parseInt(indexLista);
-        int indexC = Integer.parseInt(indexCartao);
-        Cartao c = this.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1);
+    public void arquivarCartao(String indexQuadro, String indexLista, String indexCartao) {
+        int indexQ = Integer.parseInt(indexQuadro) - 1;
+        int indexL = Integer.parseInt(indexLista) - 1;
+        int indexC = Integer.parseInt(indexCartao) - 1;
+        Cartao c = this.getQuadros().get(indexQ).getLista().get(indexL).getCartoes().get(indexC);
         c.setArquivado(true);
-        c.getLog().add(log);
+        c.addLog("Usuário arquivou este cartão");
     }
 
-    public void restauraLista(Sistema s, String opListaArquivada) {
-        int lArquivada = Integer.parseInt(opListaArquivada);
-        ArrayList<Lista> listaArquivada = new ArrayList<>();
-        ArrayList<Quadro> quadros = s.getQuadros();
-        for (Quadro q : quadros){
-            ArrayList<Lista> listas = q.getLista();
-            for (Lista l : listas){
-                if (l.estaArquivada())
-                    listaArquivada.add(l);
-            }
-        }
-        listaArquivada.get(lArquivada - 1).setArquivada(false);
+    public void restauraLista(String indexQuadro, String indexLista) {
+        int indexQ = Integer.parseInt(indexQuadro) - 1;
+        int indexL = Integer.parseInt(indexLista) -1 ;
+        this.quadros.get(indexQ).getLista().get(indexL).setArquivada(false);
     }
 
-    public void restauraCartao(Sistema s, String opCartaoArquivado, String log) {
-        int cArquivado = Integer.parseInt(opCartaoArquivado);
-        ArrayList<Cartao> cartaoArquivado = new ArrayList<>();
-        ArrayList<Quadro> quadros = s.getQuadros();
-        for (Quadro q : quadros){
-            ArrayList<Lista> listas = q.getLista();
-            for (Lista l : listas){
-                if (!l.estaArquivada()){
-                    ArrayList<Cartao> cartoes = l.getCartoes();
-                    for (Cartao c : cartoes){
-                        if (c.estaArquivado())
-                            cartaoArquivado.add(c);
-                    }
-                }
-            }
-        }
-        cartaoArquivado.get(cArquivado - 1).setArquivado(false);
-        cartaoArquivado.get(cArquivado - 1).getLog().add(log);
+    public void restauraCartao(String indexQuadro, String indexLista,String indexCartao) {
+        int indexQ = Integer.parseInt(indexQuadro) - 1;
+        int indexL = Integer.parseInt(indexLista) - 1;
+        int indexC = Integer.parseInt(indexCartao) - 1;
+        Cartao c = this.getQuadros().get(indexQ).getLista().get(indexL).getCartoes().get(indexC);
+        c.setArquivado(true);
+        c.addLog("Usuário restaurou este cartão");
     }
 
-    public void excluiLista(Sistema s, String opExcluiLista) {
-        int opListaExclui = Integer.parseInt(opExcluiLista);
-        ArrayList<Lista> listaArquivada = new ArrayList<>();
-        ArrayList<Quadro> quadros = s.getQuadros();
-        for (Quadro q : quadros){
-            ArrayList<Lista> listas = q.getLista();
-            for (Lista l : listas){
-                if (l.estaArquivada())
-                    listaArquivada.add(l);
-            }
-        }
-        listaArquivada.remove(opListaExclui - 1);
+    public void excluiLista(String indexQuadro, String indexLista) {
+        int indexQ = Integer.parseInt(indexQuadro) - 1;
+        int indexL = Integer.parseInt(indexLista) -1 ;
+        this.quadros.get(indexQ).rmLista(indexL);
     }
 
-    public void excluiCartao(Sistema s, String opExcluiCartao) {
-        int cExcluido = Integer.parseInt(opExcluiCartao);
-        ArrayList<Cartao> cartaoArquivado = new ArrayList<>();
-        ArrayList<Quadro> quadros = s.getQuadros();
-        for (Quadro q : quadros){
-            ArrayList<Lista> listas = q.getLista();
-            for (Lista l : listas){
-                if (!l.estaArquivada()){
-                    ArrayList<Cartao> cartoes = l.getCartoes();
-                    for (Cartao c : cartoes){
-                        if (c.estaArquivado())
-                            cartaoArquivado.add(c);
-                    }
-                }
-            }
-        }
-        cartaoArquivado.remove(cExcluido - 1);
+    public void excluiCartao(String indexQuadro, String indexLista,String indexCartao) {
+        int indexQ = Integer.parseInt(indexQuadro) - 1;
+        int indexL = Integer.parseInt(indexLista) - 1;
+        int indexC = Integer.parseInt(indexCartao) - 1;
+        this.getQuadros().get(indexQ).getLista().get(indexL).rmCartao(indexC);
     }
 }
