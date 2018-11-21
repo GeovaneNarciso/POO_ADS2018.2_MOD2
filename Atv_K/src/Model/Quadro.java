@@ -1,6 +1,8 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Quadro {
     private String nome;
@@ -14,8 +16,8 @@ public class Quadro {
         return nome;
     }
 
-    public ArrayList<Lista> getLista() {
-        return lista;
+    public List<Lista> getLista() {
+        return Collections.unmodifiableList(lista);
     }
 
     public void addLista(String titulo) {

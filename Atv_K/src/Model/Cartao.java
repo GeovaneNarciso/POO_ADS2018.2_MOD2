@@ -1,6 +1,8 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Cartao {
     private String titulo;
@@ -17,12 +19,12 @@ public class Cartao {
         return titulo;
     }
 
-    public ArrayList<String> getEtiquetas() {
-        return etiquetas;
+    public List<String> getEtiquetas() {
+        return Collections.unmodifiableList(etiquetas);
     }
 
-    public ArrayList<String> getLog() {
-        return log;
+    public List<String> getLog() {
+        return Collections.unmodifiableList(log);
     }
 
     public boolean estaArquivado() {
