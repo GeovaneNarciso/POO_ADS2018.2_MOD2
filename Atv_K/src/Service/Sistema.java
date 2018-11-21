@@ -1,8 +1,6 @@
 package Service;
 
-import Model.Cartao;
-import Model.Lista;
-import Model.Quadro;
+import Model.*;
 
 import java.util.ArrayList;
 
