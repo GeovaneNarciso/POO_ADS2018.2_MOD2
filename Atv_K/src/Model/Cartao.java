@@ -1,10 +1,11 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Cartao {
+public class Cartao implements Serializable {
     private String titulo;
     private boolean arquivado = false;
     private ArrayList<String> etiquetas = new ArrayList<>();
@@ -19,12 +20,12 @@ public class Cartao {
         return titulo;
     }
 
-    public List<String> getEtiquetas() {
-        return Collections.unmodifiableList(etiquetas);
+    public ArrayList<String> getEtiquetas() {
+        return etiquetas;
     }
 
-    public List<String> getLog() {
-        return Collections.unmodifiableList(log);
+    public ArrayList<String> getLog() {
+        return log;
     }
 
     public boolean estaArquivado() {

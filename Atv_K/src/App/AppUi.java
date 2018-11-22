@@ -1,8 +1,11 @@
 package App;
 
 import Model.*;
+import Persistence.BD;
+import Persistence.SGBD;
 import Service.*;
 import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -33,7 +36,7 @@ public class AppUi {
                 "  04 - Excluir Lista\n" +
                 "  05 - Excluir Cartão\n\n";
         int num = 1;
-        ArrayList<Lista> lista = s.getQuadros().get(index - 1).getLista();
+        ArrayList<Lista> lista = (ArrayList<Lista>) s.getQuadros().get(index - 1).getLista();
         for (Lista l : lista) {
             if (!l.estaArquivada()){
                 s1 += "  " + Integer.toString(num) + " - Acessar " + l.getTitulo() + "\n";
@@ -60,7 +63,7 @@ public class AppUi {
                 "  01 - Adicionar um cartão\n" +
                 "  02 - Arquivar esta lista\n\n";
         int num = 1;
-        ArrayList<Cartao> cartoes = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes();
+        ArrayList<Cartao> cartoes = (ArrayList<Cartao>) s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes();
         for (Cartao c : cartoes) {
             if (!c.estaArquivado()){
                 s1 += "  " + num + " - Acessar " + c.getTitulo() + "\n";
@@ -79,8 +82,8 @@ public class AppUi {
 
         String tituloCartao = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1).getTitulo();
         String tituloLista = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getTitulo();
-        ArrayList<String> etiquetas = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1).getEtiquetas();
-        ArrayList<String> log = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1).getLog();
+        ArrayList<String> etiquetas = (ArrayList<String>) s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1).getEtiquetas();
+        ArrayList<String> log = (ArrayList<String>) s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes().get(indexC - 1).getLog();
         Collections.reverse(log);
         String s1 = "----- TRELLINHO -----\n" +
                 " ||| " + tituloCartao + "\n" +
@@ -101,7 +104,7 @@ public class AppUi {
     }
     private static String menuListasArquivadas(Sistema s, String indexQuadro){
         int index = Integer.parseInt(indexQuadro) - 1;
-        ArrayList<Lista> listas = s.getQuadros().get(index).getLista();
+        ArrayList<Lista> listas = (ArrayList<Lista>) s.getQuadros().get(index).getLista();
         String s1 = "----- TRELLINHO -----\n" +
                 " ||| Listas Arquivadas\n\n" +
                 "    Informe uma opção para restaurar (0 - Voltar): \n";
@@ -116,7 +119,7 @@ public class AppUi {
     private static String menuCartoesArquivados(Sistema s, String indexQuadro, String indexLista){
         int indexL = Integer.parseInt(indexLista) - 1;
         int indexQ = Integer.parseInt(indexQuadro) - 1;
-        ArrayList<Cartao> cartoes = s.getQuadros().get(indexQ).getLista().get(indexL).getCartoes();
+        ArrayList<Cartao> cartoes = (ArrayList<Cartao>) s.getQuadros().get(indexQ).getLista().get(indexL).getCartoes();
         String s1 = "----- TRELLINHO -----\n" +
                 " ||| Cartões Arquivados\n\n" +
                 "    Informe uma opção para restaurar (0 - Voltar): \n";
@@ -130,7 +133,8 @@ public class AppUi {
         return s1;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        System.out.println(System.getProperty("user.dir"));
         Sistema s = new Sistema();
         String opSistema = "-1"; // opSistema == número da opção do quadro.
         while (!opSistema.equals("00")) {
@@ -142,6 +146,7 @@ public class AppUi {
                     break;
 
                 case "00": //Sair/encerra.
+                    SGBD.save(new BD(s.getQuadros()));
                     break;
 
                 default:

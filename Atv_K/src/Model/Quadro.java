@@ -1,10 +1,11 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Quadro {
+public class Quadro implements Serializable {
     private static int staticId = 0;
     private String id;
     private String nome;
@@ -20,8 +21,8 @@ public class Quadro {
         return nome;
     }
 
-    public List<Lista> getLista() {
-        return Collections.unmodifiableList(lista);
+    public ArrayList<Lista> getLista() {
+        return lista;
     }
 
     public void addLista(String titulo) {

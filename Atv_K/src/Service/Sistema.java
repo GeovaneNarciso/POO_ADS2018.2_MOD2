@@ -1,11 +1,25 @@
 package Service;
 
 import Model.*;
+import Persistence.SGBD;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Sistema {
-    private ArrayList<Quadro> quadros = new ArrayList<>();
+    private ArrayList<Quadro> quadros;
+
+    public Sistema() throws IOException, ClassNotFoundException {
+        try
+        {
+            this.quadros = SGBD.read();
+        }
+        catch(Exception e)
+        {
+            this.quadros = new ArrayList<>();
+        }
+
+    }
 
     public ArrayList<Quadro> getQuadros() {
         return quadros;
