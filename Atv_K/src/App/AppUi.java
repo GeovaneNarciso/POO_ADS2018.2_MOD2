@@ -34,9 +34,10 @@ public class AppUi {
                 "  02 - Restaurar Lista\n" +
                 "  03 - Restaurar Cartão\n" +
                 "  04 - Excluir Lista\n" +
-                "  05 - Excluir Cartão\n\n";
+                "  05 - Excluir Cartão\n" +
+                "  06 - Excluir este Quadro\n\n";
         int num = 1;
-        ArrayList<Lista> lista = (ArrayList<Lista>) s.getQuadros().get(index - 1).getLista();
+        ArrayList<Lista> lista = s.getQuadros().get(index - 1).getLista();
         for (Lista l : lista) {
             if (!l.estaArquivada()){
                 s1 += "  " + Integer.toString(num) + " - Acessar " + l.getTitulo() + "\n";
@@ -63,7 +64,7 @@ public class AppUi {
                 "  01 - Adicionar um cartão\n" +
                 "  02 - Arquivar esta lista\n\n";
         int num = 1;
-        ArrayList<Cartao> cartoes = (ArrayList<Cartao>) s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes();
+        ArrayList<Cartao> cartoes = s.getQuadros().get(indexQ - 1).getLista().get(indexL - 1).getCartoes();
         for (Cartao c : cartoes) {
             if (!c.estaArquivado()){
                 s1 += "  " + num + " - Acessar " + c.getTitulo() + "\n";
@@ -181,6 +182,10 @@ public class AppUi {
                                 if (opExcluiCartao.equals("0"))
                                     break;
                                 s.excluiCartao(opSistema, opQuadro, opExcluiCartao);
+                                break;
+                            case "06": //Exclui Quadro
+                                s.rmQuadro(opSistema);
+                                opQuadro = "00";
                                 break;
                             case "00":
                                 break;

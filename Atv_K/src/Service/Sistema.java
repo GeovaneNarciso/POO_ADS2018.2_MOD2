@@ -96,4 +96,9 @@ public class Sistema {
         int indexC = Integer.parseInt(indexCartao) - 1;
         this.getQuadros().get(indexQ).getLista().get(indexL).rmCartao(indexC);
     }
+
+    public void rmQuadro(String indexQuadro) {
+        int indexQ = Integer.parseInt(indexQuadro) - 1;
+        this.quadros.remove(indexQ);
+    }
 }
