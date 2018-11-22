@@ -79,8 +79,8 @@ public class Sistema {
         int indexQ = Integer.parseInt(indexQuadro) - 1;
         int indexL = Integer.parseInt(indexLista) - 1;
         int indexC = Integer.parseInt(indexCartao) - 1;
-        Cartao c = this.getQuadros().get(indexQ).getLista().get(indexL).getCartoes().get(indexC);
-        c.setArquivado(true);
+        Cartao c = this.quadros.get(indexQ).getLista().get(indexL).getCartoes().get(indexC);
+        c.setArquivado(false);
         c.addLog("Usuário restaurou este cartão");
     }
 
