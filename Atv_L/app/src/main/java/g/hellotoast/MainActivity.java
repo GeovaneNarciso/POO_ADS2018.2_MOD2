@@ -30,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void  countDown(View view) {
-        mCount--;
-        if (mShowCount != null && mCount >= 0)
-            mShowCount.setText(Integer.toString(mCount));
+        if (mCount > 0) {
+            mCount--;
+            if (mShowCount != null)
+                mShowCount.setText(Integer.toString(mCount));
+        }
     }
 }
