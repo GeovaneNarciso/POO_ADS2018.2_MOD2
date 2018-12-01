@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Hello Toast</string>
+    <string name="app_name">Contador</string>
     <string name="button_label_toast">Saudação</string>
     <string name="button_label_count">+</string>
     <string name="button_label_decrease">-</string>
