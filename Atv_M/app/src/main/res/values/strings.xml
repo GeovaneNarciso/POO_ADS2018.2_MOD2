@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Nu3ents</string>
+    <string name="nome">Nome do usuário</string>
+    <string name="cadastrar">Enviar dados</string>
+    <string name="tmb_txt">Taxa Metabólica Basal (TMB)</string>
+    <string name="tmb_valor">3,500</string>
+</resources>
