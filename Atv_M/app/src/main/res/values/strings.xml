@@ -1,7 +1,19 @@
 <resources>
     <string name="app_name">Nu3ents</string>
     <string name="nome">Nome do usuário</string>
-    <string name="cadastrar">Enviar dados</string>
-    <string name="tmb_txt">Taxa Metabólica Basal (TMB)</string>
+    <string name="cadastrar">Informar dados</string>
+    <string name="tmb_txt">Taxa Metabólica Basal (TMB):</string>
     <string name="tmb_valor">3,500</string>
+    <string name="estilo_txt">Estilo de vida:</string>
+    <string name="calorias_txt">Necessidades calóricas totais:</string>
+    <string name="calorias_valor">2000</string>
+    <string name="detalhar">Detalhar</string>
+    <string name="altura">1,88 cm</string>
+    <string name="peso">83 kg</string>
+    <string-array name="estilo_spinner">
+        <item>Sedentário</item>
+        <item>Levemente ativo</item>
+        <item>Moderadamente ativo</item>
+        <item>Muito ativo</item>
+    </string-array>
 </resources>
