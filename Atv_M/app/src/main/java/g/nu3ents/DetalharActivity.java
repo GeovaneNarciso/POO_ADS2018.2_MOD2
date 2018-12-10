@@ -46,7 +46,7 @@ public class DetalharActivity extends AppCompatActivity {
         carbo_kcal.setText(String.format("%.2f", kcal * 0.60));
         carbo_g.setText(String.format("%.2f", (kcal * 0.60) / 4));
         gordu_kcal.setText(String.format("%.2f", kcal * 0.25));
-        gordu_g.setText(String.format("%.2f", (kcal * 0.25) / 4));
+        gordu_g.setText(String.format("%.2f", (kcal * 0.25) / 9));
     }
 
     public void voltar(View view) {
