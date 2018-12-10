@@ -2,14 +2,32 @@
     <string name="app_name">Nu3ents</string>
     <string name="nome">Nome do usuário</string>
     <string name="cadastrar">Informar dados</string>
-    <string name="tmb_txt">Taxa Metabólica Basal (TMB):</string>
+    <string name="tmb_txt">Taxa Metabólica Basal:</string>
     <string name="tmb_valor">3,500</string>
     <string name="estilo_txt">Estilo de vida:</string>
-    <string name="calorias_txt">Necessidades calóricas totais:</string>
+    <string name="calorias_txt">Necessidade calórica total:</string>
     <string name="calorias_valor">2000</string>
     <string name="detalhar">Detalhar</string>
     <string name="altura">1,88 cm</string>
     <string name="peso">83 kg</string>
+    <string name="seu_nome">Nome</string>
+    <string name="sua_altura">Altura (Ex.: 1.75)</string>
+    <string name="seu_peso">Peso (Ex.: 60.5)</string>
+    <string name="enviar">Enviar</string>
+    <string name="kcal">%.2f kcal</string>
+    <string name="nome_detalhar">Nome do usuário</string>
+    <string name="proteina_txt">Proteínas:</string>
+    <string name="proteina_kcal">proteina_kcal</string>
+    <string name="proteina_g">proteina_g</string>
+    <string name="carboidratos">Carboidratos:</string>
+    <string name="carbo_kcal">carbo_kcal</string>
+    <string name="carbo_g">carbo_g</string>
+    <string name="gorduras">Gorduras:</string>
+    <string name="gordura_kcal">gordura_kcal</string>
+    <string name="gordura_g">gordura_g</string>
+    <string name="calorias">Calorias</string>
+    <string name="gramas">Gramas</string>
+    <string name="voltar">Voltar</string>
     <string-array name="estilo_spinner">
         <item>Sedentário</item>
         <item>Levemente ativo</item>
