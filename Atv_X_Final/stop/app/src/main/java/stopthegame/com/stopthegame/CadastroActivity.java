@@ -48,7 +48,7 @@ public class CadastroActivity extends AppCompatActivity {
                             setResult(RESULT_OK);
                             finish();
                         } else {
-                            Toast.makeText(CadastroActivity.this, "Erro (tente senha com 8 dígitos.).", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CadastroActivity.this, "Erro: "+ task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
