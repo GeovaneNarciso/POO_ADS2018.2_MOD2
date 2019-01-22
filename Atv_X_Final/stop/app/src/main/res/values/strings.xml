@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">stopthegame</string>
+    <string name="stopText">STOP</string>
+    <string name="the_game_Text">The Game</string>
+    <string name="email_EditText">Email</string>
+    <string name="senha_EditText">Senha</string>
+    <string name="entrar_Button">Entrar</string>
+    <string name="cadastrar_Button">Cadastrar</string>
 </resources>
