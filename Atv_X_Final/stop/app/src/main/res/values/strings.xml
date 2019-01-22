@@ -6,4 +6,7 @@
     <string name="senha_EditText">Senha</string>
     <string name="entrar_Button">Entrar</string>
     <string name="cadastrar_Button">Cadastrar</string>
+    <string name="senhaEditText">Senha</string>
+    <string name="confirmar_senha_EditText">Confirmar senha</string>
+    <string name="enviar_Button">Enviar</string>
 </resources>
