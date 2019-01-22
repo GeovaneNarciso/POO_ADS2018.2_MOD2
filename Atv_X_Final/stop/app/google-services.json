@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "696123072518",
+    "firebase_url": "https://stopthegame-d94e9.firebaseio.com",
+    "project_id": "stopthegame-d94e9",
+    "storage_bucket": "stopthegame-d94e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696123072518:android:0554dee42f085c4c",
+        "android_client_info": {
+          "package_name": "com.stopthegame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696123072518-cjllm6fcrkffch9cb2jdqhk8tqkp54li.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKlAKSZN6yz8ptOH9DxgYc9na2EcLL4lY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
