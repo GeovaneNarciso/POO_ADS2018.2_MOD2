@@ -9,4 +9,5 @@
     <string name="senhaEditText">Senha</string>
     <string name="confirmar_senha_EditText">Confirmar senha</string>
     <string name="enviar_Button">Enviar</string>
+    <string name="emailEditText">Email</string>
 </resources>
