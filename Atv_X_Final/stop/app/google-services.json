@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:696123072518:android:0554dee42f085c4c",
+        "mobilesdk_app_id": "1:696123072518:android:f4b797f04b642c2e",
         "android_client_info": {
-          "package_name": "com.stopthegame"
+          "package_name": "stopthegame.com.stopthegame"
         }
       },
       "oauth_client": [
