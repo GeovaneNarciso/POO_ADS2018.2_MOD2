@@ -2,8 +2,6 @@
     <string name="app_name">stopthegame</string>
     <string name="stopText">STOP</string>
     <string name="the_game_Text">The Game</string>
-    <string name="email_EditText">Email</string>
-    <string name="senha_EditText">Senha</string>
     <string name="entrar_Button">Entrar</string>
     <string name="cadastrar_Button">Cadastrar</string>
     <string name="senhaEditText">Senha</string>
@@ -12,4 +10,5 @@
     <string name="emailEditText">Email</string>
     <string name="codigo_da_sala_EditText">Código da sala</string>
     <string name="criar_sala_Button">Criar sala</string>
+    <string name="nome_editText">Nome</string>
 </resources>

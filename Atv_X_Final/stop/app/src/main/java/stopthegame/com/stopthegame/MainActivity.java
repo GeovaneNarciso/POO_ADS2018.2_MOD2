@@ -19,10 +19,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public static final int REQUEST_CODE = 100;
     private static final int RC_SIGN_IN = 1;
-    private EditText editEmail;
-    private EditText editSenha;
-
-    String email, senha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +28,6 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference("message");
 
         myRef.setValue("Hello, World!");
-
-        editEmail = findViewById(R.id.editTextEmailLogin);
-        editSenha = findViewById(R.id.editTextSenhaLogin);
-
     }
 
     public void cadastrarUsuario(View view) {
@@ -43,9 +35,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, REQUEST_CODE);
     }
 
-    public void entrarCriarSala(View view) {
-        email = editEmail.getText().toString();
-        senha = editSenha.getText().toString();
+    public void entrarLogin(View view) {
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build());
 
