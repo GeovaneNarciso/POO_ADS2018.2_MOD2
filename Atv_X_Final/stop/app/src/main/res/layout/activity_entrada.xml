@@ -37,11 +37,12 @@
         app:layout_constraintStart_toEndOf="@+id/editTextCodSala" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonCriarSala"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/criar_sala_Button"
+        android:onClick="criarSala"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonEntrarSala" />

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                String nomeUsuario = FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
+                Toast.makeText(MainActivity.this, "Bem vindo " + nomeUsuario, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, EntradaActivity.class);
                 startActivity(intent);
 
