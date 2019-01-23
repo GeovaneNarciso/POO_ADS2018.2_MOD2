@@ -46,6 +46,7 @@ public class CadastroActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             setResult(RESULT_OK);
+                            Toast.makeText(CadastroActivity.this, "Cadastro com sucesso.", Toast.LENGTH_SHORT).show();
                             finish();
                         } else {
                             Toast.makeText(CadastroActivity.this, "Erro: "+ task.getException().getMessage(), Toast.LENGTH_LONG).show();

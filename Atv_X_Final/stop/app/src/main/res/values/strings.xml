@@ -10,4 +10,6 @@
     <string name="confirmar_senha_EditText">Confirmar senha</string>
     <string name="enviar_Button">Enviar</string>
     <string name="emailEditText">Email</string>
+    <string name="codigo_da_sala_EditText">Código da sala</string>
+    <string name="criar_sala_Button">Criar sala</string>
 </resources>
