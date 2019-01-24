@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CadastroActivity" />
-        <activity android:name=".EntradaActivity"></activity>
+        <activity android:name=".EntradaActivity" />
+        <activity android:name=".ConfigSalaActivity"></activity>
     </application>
 
 </manifest>

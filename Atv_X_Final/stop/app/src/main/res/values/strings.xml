@@ -11,4 +11,35 @@
     <string name="codigo_da_sala_EditText">Código da sala</string>
     <string name="criar_sala_Button">Criar sala</string>
     <string name="nome_editText">Nome</string>
+    <string name="jogadores_TextView">JOGADORES</string>
+    <string name="rodadas_TextView">RODADAS</string>
+    <string name="tempo_TextView">TEMPO</string>
+    <string name="categorias_TextView">CATEGORIAS</string>
+    <string name="nome_proprio_CheckBox">Nome próprio</string>
+    <string name="cep_CheckBox">C.E.P. (Cidade/Estado/País)</string>
+    <string name="alimento_CheckBox">Alimento</string>
+    <string name="objeto_CheckBox">Objeto</string>
+    <string name="pch_CheckBox">P.C.H (Parte do corpo humano)</string>
+    <string name="tv_CheckBox">TV (Programa/Filme/Seriado)</string>
+    <string name="iniciar_sala_Button">Criar</string>
+    <string-array name="spinnerRodadas">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="spinnerJogadores">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    <string-array name="spinnerTempo">
+        <item>Rápido</item>
+        <item>Normal</item>
+        <item>Lento</item>
+    </string-array>
 </resources>

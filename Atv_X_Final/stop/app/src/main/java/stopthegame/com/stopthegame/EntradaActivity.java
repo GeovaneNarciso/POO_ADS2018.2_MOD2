@@ -1,5 +1,6 @@
 package stopthegame.com.stopthegame;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ public class EntradaActivity extends AppCompatActivity {
     }
 
     public void criarSala(View view) {
-
+        Intent intent = new Intent(this, ConfigSalaActivity.class);
+        startActivity(intent);
     }
 }
