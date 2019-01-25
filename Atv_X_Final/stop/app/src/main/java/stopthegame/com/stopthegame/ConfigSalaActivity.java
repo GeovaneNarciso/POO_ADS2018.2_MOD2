@@ -13,11 +13,11 @@ public class ConfigSalaActivity extends AppCompatActivity {
     private Spinner selecaoRodada;
     private Spinner selecaoJogador;
     private Spinner selecaoTempo;
-    private CheckBox cep;
 
     private int qtdMaxRodadas = 3;
     private int qtdMaxJogadores = 2;
     private int tempoRodadaSegundos = 60;
+    private String catCep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,15 +77,55 @@ public class ConfigSalaActivity extends AppCompatActivity {
 
             }
         });
-
-        cep = findViewById(R.id.checkBoxCEP);
     }
 
     public void iniciarSala(View view) {
         Toast.makeText(this, "Qtd. max. rodadas: " + qtdMaxRodadas + "" +
                 "\nQtd. max. jogadores: " + qtdMaxJogadores + "" +
-                "\nTempo da rodada: " + tempoRodadaSegundos + "" +
-                "\n C.E.P.: " + cep
+                "\nTempo da rodada: " + tempoRodadaSegundos + ""
                 , Toast.LENGTH_LONG).show();
+    }
+
+    public void onCheckboxClicked(View view) {
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch(view.getId()) {
+            case R.id.checkBoxCEP:
+                if (checked)
+                // Put some meat on the sandwich
+                else
+                // Remove the meat
+                break;
+            case R.id.checkBoxAlimento:
+                if (checked)
+                // Cheese me
+                else
+                // I'm lactose intolerant
+                break;
+            case R.id.checkBoxNome:
+                if (checked)
+                // Cheese me
+                else
+                // I'm lactose intolerant
+                break;
+            case R.id.checkBoxPCH:
+                if (checked)
+                // Cheese me
+                else
+                // I'm lactose intolerant
+                break;
+            case R.id.checkBoxTV:
+                if (checked)
+                // Cheese me
+                else
+                // I'm lactose intolerant
+                break;
+            case R.id.checkBoxObjeto:
+                if (checked)
+                // Cheese me
+                else
+                // I'm lactose intolerant
+                break;
+        }
     }
 }
