@@ -1,5 +1,6 @@
 package stopthegame.com.stopthegame;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,15 +10,31 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class ConfigSalaActivity extends AppCompatActivity {
+
     private Spinner selecaoRodada;
     private Spinner selecaoJogador;
     private Spinner selecaoTempo;
+    private CheckBox cep;
+    private CheckBox alimento;
+    private CheckBox nome;
+    private CheckBox pch;
+    private CheckBox tv;
+    private CheckBox objeto;
 
     private int qtdMaxRodadas = 3;
     private int qtdMaxJogadores = 2;
     private int tempoRodadaSegundos = 60;
     private String catCep;
+    private String catAlimento;
+    private String catNome;
+    private String catPCH;
+    private String catTV;
+    private String catObjeto;
+    private String cod_sala;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,13 +94,22 @@ public class ConfigSalaActivity extends AppCompatActivity {
 
             }
         });
+
+        cep = findViewById(R.id.checkBoxCEP);
+        alimento = findViewById(R.id.checkBoxAlimento);
+        nome = findViewById(R.id.checkBoxNome);
+        pch = findViewById(R.id.checkBoxPCH);
+        tv = findViewById(R.id.checkBoxTV);
+        objeto = findViewById(R.id.checkBoxObjeto);
+
     }
 
     public void iniciarSala(View view) {
-        Toast.makeText(this, "Qtd. max. rodadas: " + qtdMaxRodadas + "" +
-                "\nQtd. max. jogadores: " + qtdMaxJogadores + "" +
-                "\nTempo da rodada: " + tempoRodadaSegundos + ""
-                , Toast.LENGTH_LONG).show();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            cod_sala = user.getUid().substring(user.getUid().length() - 5);
+        }
+        Toast.makeText(this, cod_sala, Toast.LENGTH_LONG).show();
     }
 
     public void onCheckboxClicked(View view) {
@@ -92,39 +118,39 @@ public class ConfigSalaActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.checkBoxCEP:
                 if (checked)
-                // Put some meat on the sandwich
+                    catCep = cep.getText().toString();
                 else
-                // Remove the meat
+                    catCep = null;
                 break;
             case R.id.checkBoxAlimento:
                 if (checked)
-                // Cheese me
+                    catAlimento = alimento.getText().toString();
                 else
-                // I'm lactose intolerant
+                    catAlimento = null;
                 break;
             case R.id.checkBoxNome:
                 if (checked)
-                // Cheese me
+                    catNome = nome.getText().toString();
                 else
-                // I'm lactose intolerant
+                    catNome = null;
                 break;
             case R.id.checkBoxPCH:
                 if (checked)
-                // Cheese me
+                    catPCH = pch.getText().toString();
                 else
-                // I'm lactose intolerant
+                    catPCH = null;
                 break;
             case R.id.checkBoxTV:
                 if (checked)
-                // Cheese me
+                    catTV = tv.getText().toString();
                 else
-                // I'm lactose intolerant
+                    catTV = null;
                 break;
             case R.id.checkBoxObjeto:
                 if (checked)
-                // Cheese me
+                    catObjeto = objeto.getText().toString();
                 else
-                // I'm lactose intolerant
+                    catObjeto = null;
                 break;
         }
     }
