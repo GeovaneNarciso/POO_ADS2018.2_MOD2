@@ -1,5 +1,6 @@
 package stopthegame.com.stopthegame;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -178,6 +179,9 @@ public class ConfigSalaActivity extends AppCompatActivity {
             stopBD.child(cod_sala).child("categorias").child("tv").setValue(catTV);
         if (catNome != null)
             stopBD.child(cod_sala).child("categorias").child("objeto").setValue(catObjeto);
+
+        Intent intent = new Intent(this, SalaInicioActivity.class);
+        startActivity(intent);
 
     }
 }

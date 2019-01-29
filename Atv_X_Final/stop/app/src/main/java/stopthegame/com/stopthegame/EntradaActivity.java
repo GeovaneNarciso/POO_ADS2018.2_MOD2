@@ -31,8 +31,6 @@ public class EntradaActivity extends AppCompatActivity {
         if (user != null) {
             cod_sala = user.getUid().substring(user.getUid().length() - 5);
         }
-        //HashMap<String, Object> map = new HashMap<String, Object>();
-        //map.put(cod_sala, null);
         stopBD = FirebaseDatabase.getInstance().getReference().child("salas").child(cod_sala);
         stopBD.removeValue();
         Intent intent = new Intent(this, ConfigSalaActivity.class);

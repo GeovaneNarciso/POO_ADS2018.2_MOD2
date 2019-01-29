@@ -22,6 +22,8 @@
     <string name="pch_CheckBox">P.C.H (Parte do corpo humano)</string>
     <string name="tv_CheckBox">TV (Programa/Filme/Seriado)</string>
     <string name="iniciar_sala_Button">Criar</string>
+    <string name="cod_sala">CÓDIGO DA SALA</string>
+    <string name="cod_sala_valor">código</string>
     <string-array name="spinnerRodadas">
         <item>3</item>
         <item>4</item>
