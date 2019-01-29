@@ -12,8 +12,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ConfigSalaActivity extends AppCompatActivity {
+    private DatabaseReference stopBD;
 
     private Spinner selecaoRodada;
     private Spinner selecaoJogador;
@@ -28,13 +31,13 @@ public class ConfigSalaActivity extends AppCompatActivity {
     private int qtdMaxRodadas = 3;
     private int qtdMaxJogadores = 2;
     private int tempoRodadaSegundos = 60;
-    private String catCep;
-    private String catAlimento;
-    private String catNome;
-    private String catPCH;
-    private String catTV;
-    private String catObjeto;
-    private String cod_sala;
+    private String catCep = "";
+    private String catAlimento = "";
+    private String catNome = "";
+    private String catPCH = "";
+    private String catTV = "";
+    private String catObjeto = "";
+    private String cod_sala = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,14 +105,13 @@ public class ConfigSalaActivity extends AppCompatActivity {
         tv = findViewById(R.id.checkBoxTV);
         objeto = findViewById(R.id.checkBoxObjeto);
 
-    }
+        catCep = cep.getText().toString();
+        catAlimento = alimento.getText().toString();
+        catNome = nome.getText().toString();
+        catPCH = pch.getText().toString();
+        catTV = tv.getText().toString();
+        catObjeto = objeto.getText().toString();
 
-    public void iniciarSala(View view) {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            cod_sala = user.getUid().substring(user.getUid().length() - 5);
-        }
-        Toast.makeText(this, cod_sala, Toast.LENGTH_LONG).show();
     }
 
     public void onCheckboxClicked(View view) {
@@ -153,5 +155,29 @@ public class ConfigSalaActivity extends AppCompatActivity {
                     catObjeto = null;
                 break;
         }
+    }
+
+    public void iniciarSala(View view) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            cod_sala = user.getUid().substring(user.getUid().length() - 5);
+        }
+        stopBD = FirebaseDatabase.getInstance().getReference("salas");
+        stopBD.child(cod_sala).child("qtdMaxRodadas").setValue(qtdMaxRodadas);
+        stopBD.child(cod_sala).child("qtdMaxJogadores").setValue(qtdMaxJogadores);
+        stopBD.child(cod_sala).child("tempoRodada").setValue(tempoRodadaSegundos);
+        if (catCep != null)
+            stopBD.child(cod_sala).child("categorias").child("cep").setValue(catCep);
+        if (catAlimento != null)
+            stopBD.child(cod_sala).child("categorias").child("alimento").setValue(catAlimento);
+        if (catNome != null)
+            stopBD.child(cod_sala).child("categorias").child("nome").setValue(catNome);
+        if (catNome != null)
+            stopBD.child(cod_sala).child("categorias").child("pch").setValue(catPCH);
+        if (catNome != null)
+            stopBD.child(cod_sala).child("categorias").child("tv").setValue(catTV);
+        if (catNome != null)
+            stopBD.child(cod_sala).child("categorias").child("objeto").setValue(catObjeto);
+
     }
 }
