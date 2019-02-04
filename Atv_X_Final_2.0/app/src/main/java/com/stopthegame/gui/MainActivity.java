@@ -1,4 +1,4 @@
-package stopthegame.com.stopthegame;
+package stopthegame.com.gui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
