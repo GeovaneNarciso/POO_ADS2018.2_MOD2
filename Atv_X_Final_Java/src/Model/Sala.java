@@ -8,15 +8,18 @@ public class Sala {
     private String id;
     private int maxRodadas;
     private int maxJogadores;
+    private Jogador dono;
     private List<Jogador> jogadores = new ArrayList<>();
-    private List categorias;
+    private ArrayList categorias;
     private Partida partida;
 
-    public Sala(int maxRodadas, int maxJogadores, int tempoRodada, ArrayList categorias) {
+    public Sala(Jogador dono, int maxRodadas, int maxJogadores, int tempoRodada, ArrayList<String> categorias) {
         Sala.idEstatico += 1;
         this.id = Integer.toString(idEstatico);
         this.maxRodadas = maxRodadas;
         this.maxJogadores = maxJogadores;
+        this.dono = dono;
+        this.jogadores.add(dono);
         this.categorias = categorias;
     }
 
@@ -38,6 +41,10 @@ public class Sala {
 
     public void setMaxJogadores(int maxJogadores) {
         this.maxJogadores = maxJogadores;
+    }
+
+    public Jogador getDono() {
+        return dono;
     }
 
     public List<Jogador> getJogadores() {

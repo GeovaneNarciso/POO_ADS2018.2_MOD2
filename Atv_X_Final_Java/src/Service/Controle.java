@@ -36,7 +36,7 @@ public class Controle {
     }
 
     //Sala
-    public Sala criarSala(int maxRodadas, int maxJogadores, int tempoRodada, ArrayList categorias) {
-        return new Sala(maxRodadas, maxJogadores, tempoRodada, categorias);
+    public Sala criarSala(Jogador dono, int maxRodadas, int maxJogadores, int tempoRodada, ArrayList categorias) {
+        return new Sala(dono, maxRodadas, maxJogadores, tempoRodada, categorias);
     }
 }
