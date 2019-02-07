@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Sala {
     private static int idEstatico = 200;
-    private String id;
+    private int id;
     private int maxRodadas;
     private int maxJogadores;
     private Jogador dono;
@@ -13,9 +13,9 @@ public class Sala {
     private ArrayList categorias;
     private Partida partida;
 
-    public Sala(Jogador dono, int maxRodadas, int maxJogadores, int tempoRodada, ArrayList<String> categorias) {
+    public Sala(Jogador dono, int maxRodadas, int maxJogadores, int tempoRodada, ArrayList categorias) {
         Sala.idEstatico += 1;
-        this.id = Integer.toString(idEstatico);
+        this.id = idEstatico;
         this.maxRodadas = maxRodadas;
         this.maxJogadores = maxJogadores;
         this.dono = dono;
@@ -23,7 +23,7 @@ public class Sala {
         this.categorias = categorias;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -51,7 +51,7 @@ public class Sala {
         return jogadores;
     }
 
-    public List getCategorias() {
+    public ArrayList getCategorias() {
         return categorias;
     }
 
@@ -70,4 +70,5 @@ public class Sala {
         }else
             return false;
     }
+
 }

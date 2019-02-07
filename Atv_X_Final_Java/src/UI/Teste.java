@@ -6,6 +6,7 @@ import Service.Controle;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Teste {
 
@@ -36,13 +37,13 @@ public class Teste {
         return s4;
     }
 
-    public String exibirSala(Sala s) {
-        String s2 = "----- Sala -----\n" +
-                "ID: " + s.getId() + "\n" +
-                "Qtd. max. rodadas: " + s.getMaxRodadas() + "\n" +
-                "Qtd. max. jogadores: " + s.getMaxJogadores() + "\n" +
-                exibirCategorias(s) +
-                exibirJogadores(s);
+    public String exibirSala(Controle c) {
+        String s2 = "----- Salas -----\n" +
+                "ID   | MAX.RODADAS | MAX. JOGADORES\n";
+        for (Sala s : c.getSalas()) {
+            s2 += s.getId() + " | " + s.getMaxRodadas() + " | " +
+                    s.getMaxJogadores() + "\n";
+        }
         return s2;
     }
 
@@ -72,13 +73,19 @@ public class Teste {
         // Criação de sala
         //---------------------------------------------------------------------------------
         Jogador dono = new Jogador("Geovane", "g@gmail.com", "12345");
-        ArrayList categorias = new ArrayList();
+        //No Android o "dono" é verificado a partir do usuário atual.
+
+        ArrayList<String> categorias = new ArrayList<>();
         categorias.add("CEP");
         categorias.add("Fruta");
         categorias.add("Nome");
 
-        Sala sala = new Sala( dono,3,3, 30, categorias);
-        JOptionPane.showMessageDialog(null, t.exibirSala(sala));
+        controle.criarSala(dono,3,3, 30, categorias);
+
+        JOptionPane.showMessageDialog(null, t.exibirSala(controle));
+
+        //Entrar em sala já criada
+        //----------------------------------------------------------------------------------
 
     }
 }

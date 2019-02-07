@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Controle {
     private List<Jogador> usuarios;
+    private List<Sala> salas;
 
     public Controle() {
         this.usuarios = new ArrayList<>();
@@ -36,7 +37,21 @@ public class Controle {
     }
 
     //Sala
-    public Sala criarSala(Jogador dono, int maxRodadas, int maxJogadores, int tempoRodada, ArrayList categorias) {
-        return new Sala(dono, maxRodadas, maxJogadores, tempoRodada, categorias);
+
+    public List<Sala> getSalas() {
+        return salas;
+    }
+
+    public void criarSala(Jogador dono, int maxRodadas, int maxJogadores, int tempoRodada, ArrayList categorias) {
+        this.salas.add(new Sala(dono, maxRodadas, maxJogadores, tempoRodada, categorias));
+    }
+
+    public boolean entrarSala(int id, Jogador j) {
+        for (Sala s : this.salas) {
+            if (s.getId() == (id)) {
+                return s.addJogador(j);
+            }
+        }
+        return false;
     }
 }
