@@ -12,6 +12,7 @@ public class Controle {
 
     public Controle() {
         this.usuarios = new ArrayList<>();
+        this.salas = new ArrayList<>();
     }
 
     // Usuário
