@@ -8,15 +8,16 @@ public class Sala {
     private String id;
     private int maxRodadas;
     private int maxJogadores;
-    private List<Usuario> jogadores = new ArrayList<>();
-    private List categorias = new ArrayList();
+    private List<Jogador> jogadores = new ArrayList<>();
+    private List categorias;
     private Partida partida;
 
-    public Sala(int maxRodadas, int maxJogadores) {
+    public Sala(int maxRodadas, int maxJogadores, int tempoRodada, ArrayList categorias) {
         Sala.idEstatico += 1;
         this.id = Integer.toString(idEstatico);
         this.maxRodadas = maxRodadas;
         this.maxJogadores = maxJogadores;
+        this.categorias = categorias;
     }
 
     public String getId() {
@@ -39,7 +40,7 @@ public class Sala {
         this.maxJogadores = maxJogadores;
     }
 
-    public List<Usuario> getJogadores() {
+    public List<Jogador> getJogadores() {
         return jogadores;
     }
 
@@ -55,7 +56,7 @@ public class Sala {
         this.partida = partida;
     }
 
-    public boolean addJogador(Usuario jogador) {
+    public boolean addJogador(Jogador jogador) {
         if (jogadores.size() != maxJogadores) {
             this.jogadores.add(jogador);
             return true;

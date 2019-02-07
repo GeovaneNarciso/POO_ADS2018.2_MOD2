@@ -1,20 +1,22 @@
 package Model;
 
-public class Usuario {
+public class Jogador {
     private static int idEstatico = 100;
     private String id;
     private String nome;
     private String email;
     private String senha;
     private int pontos;
+    private String resposta;
 
-    public Usuario(String nome, String email, String senha) {
-        Usuario.idEstatico += 1;
+    public Jogador(String nome, String email, String senha) {
+        Jogador.idEstatico += 1;
         this.id = Integer.toString(idEstatico);
         this.nome = nome;
         this.senha = senha;
         this.email = email;
         this.pontos = 0;
+        this.resposta = "";
     }
 
     public String getId() {
@@ -37,7 +39,7 @@ public class Usuario {
         return pontos;
     }
 
-    public void setPontos(int pontos) {
-        this.pontos = pontos;
+    public String getResposta() {
+        return resposta;
     }
 }

@@ -1,6 +1,6 @@
 package UI;
 
-import Model.Usuario;
+import Model.Jogador;
 import Service.Controle;
 
 import javax.swing.*;
@@ -10,7 +10,7 @@ public class Teste {
     public String exibirUsuarios(Controle c) {
         String s = "----- Usuarios -----\n" +
                 "ID   | NOME | EMAIL | SENHA | PONTOS\n";
-        for (Usuario u : c.getUsuarios()) {
+        for (Jogador u : c.getUsuarios()) {
             s += u.getId() + " | " + u.getNome() + " | " +
                     u.getEmail() + " | " + u.getSenha() +
                     " | " + u.getPontos() + "\n";
@@ -22,6 +22,7 @@ public class Teste {
         Teste t = new Teste();
         Controle controle = new Controle();
 
+        // Cadastro de usuários
         if (controle.cadastraUsuario("Geovane", "g@gmail.com", "12345"))
             JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
         else
@@ -38,5 +39,8 @@ public class Teste {
             JOptionPane.showMessageDialog(null, "Email já existe.");
 
         JOptionPane.showMessageDialog(null, t.exibirUsuarios(controle));
+
+        // Criação de sala
+
     }
 }
