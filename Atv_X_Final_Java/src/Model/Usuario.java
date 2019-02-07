@@ -8,7 +8,7 @@ public class Usuario {
     private String senha;
     private int pontos;
 
-    public Usuario(String nome, String senha, String email) {
+    public Usuario(String nome, String email, String senha) {
         Usuario.idEstatico += 1;
         this.id = Integer.toString(idEstatico);
         this.nome = nome;
