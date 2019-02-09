@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c49d8ca-50bf-483e-9c4d-7f588f2ca675" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Atv_X_Final_Java/Service/Controle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Atv_X_Final_Java/Service/Controle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/Controle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/Controle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UI/Teste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UI/Teste.java" afterDir="false" />
-    </list>
+    <list default="true" id="5c49d8ca-50bf-483e-9c4d-7f588f2ca675" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Service/Controle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+            <state relative-caret-position="154">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#criarSala#0;class#Controle#0" />
@@ -85,7 +80,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UI/Teste.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="410">
@@ -239,6 +234,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="547" y="0" width="995" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.515006" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -317,18 +313,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Service/Controle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#criarSala#0;class#Controle#0" />
-            <element signature="method#entrarSala#0;class#Controle#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/Teste.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
@@ -337,6 +321,18 @@
             <element signature="method#exibirUsuarios#0;class#Teste#0" />
             <element signature="method#exibirCategorias#0;class#Teste#0" />
             <element signature="method#exibirJogadores#0;class#Teste#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Service/Controle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#criarSala#0;class#Controle#0" />
+            <element signature="method#entrarSala#0;class#Controle#0" />
           </folding>
         </state>
       </provider>
