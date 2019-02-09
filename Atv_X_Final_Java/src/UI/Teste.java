@@ -39,10 +39,11 @@ public class Teste {
 
     public String exibirSala(Controle c) {
         String s2 = "----- Salas -----\n" +
-                "ID   | MAX.RODADAS | MAX. JOGADORES\n";
+                "ID     | MAX.RODADAS | MAX. JOGADORES\n";
         for (Sala s : c.getSalas()) {
-            s2 += s.getId() + " | " + s.getMaxRodadas() + " | " +
+            s2 += s.getId() + "  |  " + s.getMaxRodadas() + "                             | " +
                     s.getMaxJogadores() + "\n";
+            s2 += exibirJogadores(s);
         }
         return s2;
     }
@@ -72,20 +73,34 @@ public class Teste {
 
         // Criação de sala
         //---------------------------------------------------------------------------------
-        Jogador dono = new Jogador("Geovane", "g@gmail.com", "12345");
-        //No Android o "dono" é verificado a partir do usuário atual.
-
+        Jogador servidor = new Jogador("Geovane", "g@gmail.com", "12345");
         ArrayList<String> categorias = new ArrayList<>();
         categorias.add("CEP");
         categorias.add("Fruta");
         categorias.add("Nome");
-
-        controle.criarSala(dono,3,3, 30, categorias);
+                // Dados do jogador e da sala podem ser passados diretamente como parâmetro.
+        controle.criarSala(servidor,3,2, 30, categorias);
 
         JOptionPane.showMessageDialog(null, t.exibirSala(controle));
 
         //Entrar em sala já criada
         //----------------------------------------------------------------------------------
+        if (controle.entrarSala(200, new Jogador("Rogerio", "r@gmail.com", "56789")))
+            JOptionPane.showMessageDialog(null, "Entrada com sucesso.");
+        else
+            JOptionPane.showMessageDialog(null, "Id incorreto ou sala cheia");
+
+        if (controle.entrarSala(201, new Jogador("Rogerio", "r@gmail.com", "56789")))
+            JOptionPane.showMessageDialog(null, "Entrada com sucesso.");
+        else
+            JOptionPane.showMessageDialog(null, "Id incorreto ou sala cheia.");
+
+        if (controle.entrarSala(201, new Jogador("Pazuzu", "p@gmail.com", "54321")))
+            JOptionPane.showMessageDialog(null, "Entrada com sucesso.");
+        else
+            JOptionPane.showMessageDialog(null, "Id incorreto ou sala cheia.");
+
+        JOptionPane.showMessageDialog(null, t.exibirSala(controle));
 
     }
 }

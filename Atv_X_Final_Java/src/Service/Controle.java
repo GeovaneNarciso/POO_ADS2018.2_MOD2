@@ -49,7 +49,8 @@ public class Controle {
     public boolean entrarSala(int id, Jogador j) {
         for (Sala s : this.salas) {
             if (s.getId() == (id)) {
-                return s.addJogador(j);
+                if (s.getJogadores().size() != s.getMaxJogadores())
+                    return s.addJogador(j);
             }
         }
         return false;
