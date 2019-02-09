@@ -38,13 +38,12 @@ public class Controle {
     }
 
     //Sala
-
     public List<Sala> getSalas() {
         return salas;
     }
 
-    public void criarSala(Jogador dono, int maxRodadas, int maxJogadores, int tempoRodada, ArrayList categorias) {
-        this.salas.add(new Sala(dono, maxRodadas, maxJogadores, tempoRodada, categorias));
+    public void criarSala(Jogador servidor, int maxRodadas, int maxJogadores, int tempoRodada, ArrayList categorias) {
+        this.salas.add(new Sala(servidor, maxRodadas, maxJogadores, tempoRodada, categorias));
     }
 
     public boolean entrarSala(int id, Jogador j) {
