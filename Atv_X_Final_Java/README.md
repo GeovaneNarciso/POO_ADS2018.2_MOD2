@@ -1,4 +1,4 @@
-# Stop - The Game
+# Stop - The Game (em andamento)
 ![stop](https://raw.githubusercontent.com/GeovaneNarciso/POO_ADS2018.2_MOD2/master/Atv_X_Final_Java/passos/Stop-logo.jpg)
 
 O Stop-The Game é um jogo de stop(adedonha), onde os jogadores reunidos em uma sala devem à cada rodada da partida, escrever palavras baseadas em categorias, e que tenham a letra inicial igual a letra sorteada da rodada.
@@ -63,3 +63,8 @@ Pretende-se usar o Firebase.
 - Storyboard baseado em uma aplicação Android.
 
 ![storyboard](https://raw.githubusercontent.com/GeovaneNarciso/POO_ADS2018.2_MOD2/master/Atv_X_Final_Java/passos/PassoD.jpg)
+
+## Meta
+Geovane Narciso da Silva - geovane.ns@msn.com
+https://github.com/GeovaneNarciso/POO_ADS2018.2_MOD2/tree/master/Atv_X_Final_Java
+
