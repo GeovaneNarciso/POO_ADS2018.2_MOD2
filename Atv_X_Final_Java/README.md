@@ -13,6 +13,7 @@ Ao término de cada rodada os jogadores avaliam as palavras e são distribuídos
     - senha;
     - pontos;
     - resposta;
+    - pontuação total
   - Métodos
     - getters e setters.
 - **Sala**
@@ -36,7 +37,7 @@ Ao término de cada rodada os jogadores avaliam as palavras e são distribuídos
     - getters e setters.
 - **Pontuação**
   - Atributos
-    - nome do jogador;
+    - id do jogador;
     - pontos.
   - Métodos
     - getters e setters.
@@ -48,7 +49,7 @@ Ao término de cada rodada os jogadores avaliam as palavras e são distribuídos
   - Métodos
     - getters e setters.
 ## Relacionamentos
-Um jogador pode entrar em uma sala (que pode ter vários jogadores), a sala tem uma ou várias partidas (que só pode estar em uma sala), cada partida contém uma ou mais rodadas (que só pode estar em uma partida) e possui uma pontuação (que deve ter uma partida ou rodada).
+Um jogador pode entrar em uma sala (que pode ter vários jogadores), a sala tem uma ou várias partidas (que só pode estar em uma sala), cada partida contém uma ou mais rodadas (que só pode estar em uma partida) e possui uma pontuação (que deve ter uma partida ou rodada). O jogador possui uma pontuação (que só pode estar em um jogador).
 ## Persistência de dados
 Pretende-se usar o Firebase.
 ## Diagrama de Classe simplificado
