@@ -8,6 +8,7 @@ public class Jogador {
     private String senha;
     private int pontos;
     private String resposta;
+    private Pontuacao pontosTotais;
 
     public Jogador(String nome, String email, String senha) {
         Jogador.idEstatico += 1;
