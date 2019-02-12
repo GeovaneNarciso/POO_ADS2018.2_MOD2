@@ -2,16 +2,16 @@ package Model;
 
 public class Pontuacao {
 
-    private String nomeJogador;
+    private int idJogador;
     private int pontos;
 
-    public Pontuacao(String nomeJogador, int pontos) {
-        this.nomeJogador = nomeJogador;
+    public Pontuacao(int nomeJogador, int pontos) {
+        this.idJogador = nomeJogador;
         this.pontos = pontos;
     }
 
-    public String getNomeJogador() {
-        return nomeJogador;
+    public int getIdJogador() {
+        return idJogador;
     }
 
     public int getPontos() {
