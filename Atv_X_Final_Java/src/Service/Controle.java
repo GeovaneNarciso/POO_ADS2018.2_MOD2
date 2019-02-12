@@ -5,6 +5,7 @@ import Model.Jogador;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Controle {
     private List<Jogador> usuarios;
@@ -15,7 +16,7 @@ public class Controle {
         this.salas = new ArrayList<>();
     }
 
-    // Usuário
+    // Usuário ---------------------------------------------------------------------------------------------------------
     public List<Jogador> getUsuarios() {
         return usuarios;
     }
@@ -37,7 +38,7 @@ public class Controle {
             return false;
     }
 
-    //Sala
+    //Sala -------------------------------------------------------------------------------------------------------------
     public List<Sala> getSalas() {
         return salas;
     }
@@ -54,5 +55,26 @@ public class Controle {
             }
         }
         return false;
+    }
+
+    //Partida ----------------------------------------------------------------------------------------------------------
+    public Sala buscaSala(int id) {
+        for (Sala s : this.getSalas()) {
+            if (s.getId() == id)
+                return s;
+        }
+        return null;
+    }
+
+    public char sorteiaLetra() {
+        Random r = new Random();
+        int valor;
+        valor = (char)(65 + r.nextInt(90 - 65));
+        return (char) valor;
+    }
+
+              //iniciarPartida é o método que o usuário/jogador servidor usará.
+    public void iniciarPartida(int idSala) {
+
     }
 }

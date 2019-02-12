@@ -6,7 +6,6 @@ import Service.Controle;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Teste {
 
@@ -37,7 +36,7 @@ public class Teste {
         return s4;
     }
 
-    public String exibirSala(Controle c) {
+    public String exibirSalas(Controle c) {
         String s2 = "----- Salas -----\n" +
                 "ID     | MAX.RODADAS | MAX. JOGADORES\n";
         for (Sala s : c.getSalas()) {
@@ -48,31 +47,38 @@ public class Teste {
         return s2;
     }
 
+    public String exibirSala(Sala s) {
+        String s2 = "----- Sala -----\n" +
+                "ID     | MAX.RODADAS | MAX. JOGADORES\n";
+                s2 += s.getId() + "  |  " + s.getMaxRodadas() + "                             | " +
+                s.getMaxJogadores() + "\n";
+                s2 += exibirJogadores(s);
+                return s2;
+    }
+
     public static void main(String[] args) {
         Teste t = new Teste();
         Controle controle = new Controle();
 
-        // Cadastro de usuários
-        //----------------------------------------------------------------------------------------
+        // Cadastro de usuário -----------------------------------------------------------------------------------------
         if (controle.cadastraUsuario("Geovane", "g@gmail.com", "12345"))
-            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
+            JOptionPane.showMessageDialog(null, "CADASTRAR USUÁRIO\nCadastrado com sucesso.");
         else
-            JOptionPane.showMessageDialog(null, "Email já existe.");
+            JOptionPane.showMessageDialog(null, "CADASTRAR USUÁRIO\nEmail já existe.");
 
         if (controle.cadastraUsuario("Rogério", "g@gmail.com", "12345"))
-            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
+            JOptionPane.showMessageDialog(null, "CADASTRAR USUÁRIO\nCadastrado com sucesso.");
         else
-            JOptionPane.showMessageDialog(null, "Email já existe.");
+            JOptionPane.showMessageDialog(null, "CADASTRAR USUÁRIO\nEmail já existe.");
 
         if (controle.cadastraUsuario("Rogério", "r@gmail.com", "12345"))
-            JOptionPane.showMessageDialog(null, "Cadastrado com sucesso.");
+            JOptionPane.showMessageDialog(null, "CADASTRAR USUÁRIO\nCadastrado com sucesso.");
         else
-            JOptionPane.showMessageDialog(null, "Email já existe.");
+            JOptionPane.showMessageDialog(null, "CADASTRAR USUÁRIO\nEmail já existe.");
 
         JOptionPane.showMessageDialog(null, t.exibirUsuarios(controle));
 
-        // Criação de sala
-        //---------------------------------------------------------------------------------
+        // Criação de sala ---------------------------------------------------------------------------------------------
         Jogador servidor = new Jogador("Geovane", "g@gmail.com", "12345");
         ArrayList<String> categorias = new ArrayList<>();
         categorias.add("CEP");
@@ -81,26 +87,31 @@ public class Teste {
                 // Dados do jogador e da sala podem ser passados diretamente como parâmetro.
         controle.criarSala(servidor,3,2, 30, categorias);
 
-        JOptionPane.showMessageDialog(null, t.exibirSala(controle));
+        JOptionPane.showMessageDialog(null, t.exibirSalas(controle));
 
-        //Entrar em sala já criada
-        //----------------------------------------------------------------------------------
+        //Entrar em sala já criada -------------------------------------------------------------------------------------
         if (controle.entrarSala(200, new Jogador("Rogerio", "r@gmail.com", "56789")))
-            JOptionPane.showMessageDialog(null, "Entrada com sucesso.");
+            JOptionPane.showMessageDialog(null, "ENTRAR EM SALA\nEntrada com sucesso.");
         else
-            JOptionPane.showMessageDialog(null, "Id incorreto ou sala cheia");
+            JOptionPane.showMessageDialog(null, "ENTRAR EM SALA\nId incorreto ou sala cheia");
 
         if (controle.entrarSala(201, new Jogador("Rogerio", "r@gmail.com", "56789")))
-            JOptionPane.showMessageDialog(null, "Entrada com sucesso.");
+            JOptionPane.showMessageDialog(null, "ENTRAR EM SALA\nEntrada com sucesso.");
         else
-            JOptionPane.showMessageDialog(null, "Id incorreto ou sala cheia.");
+            JOptionPane.showMessageDialog(null, "ENTRAR EM SALA\nId incorreto ou sala cheia.");
 
         if (controle.entrarSala(201, new Jogador("Pazuzu", "p@gmail.com", "54321")))
-            JOptionPane.showMessageDialog(null, "Entrada com sucesso.");
+            JOptionPane.showMessageDialog(null, "ENTRAR EM SALA\nEntrada com sucesso.");
         else
-            JOptionPane.showMessageDialog(null, "Id incorreto ou sala cheia.");
+            JOptionPane.showMessageDialog(null, "ENTRAR EM SALA\nId incorreto ou sala cheia.");
 
-        JOptionPane.showMessageDialog(null, t.exibirSala(controle));
+        JOptionPane.showMessageDialog(null, t.exibirSalas(controle));
 
+        //Iniciar partida ----------------------------------------------------------------------------------------------
+        JOptionPane.showMessageDialog(null, "INICIAR PARTIDA\n" +
+                t.exibirSala(controle.buscaSala(201)));
+
+        JOptionPane.showMessageDialog(null, "INICIAR PARTIDA\n" +
+                "Letra sorteada: " + controle.sorteiaLetra());
     }
 }
